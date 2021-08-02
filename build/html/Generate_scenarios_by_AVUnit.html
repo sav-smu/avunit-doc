@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Generate Scenarios by AVUnit &mdash; AVUnit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Semantics of Describing Scenes" href="Semantics_of_Describing_Scenes.html" />
+    <link rel="prev" title="Types" href="types.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AVUnit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_AVUnit.html">Introduction to AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Install_AVUnit.html">Install AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AVUnit_examples.html">AVUnit examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Language Description</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generate Scenarios by AVUnit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#describe-a-scenario">Describe a Scenario</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#map">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ego-vehicle">Ego Vehicle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#npc-vehicles">Npc Vehicles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pedestrians">Pedestrians</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obstacles">Obstacles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment">Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scenario-definition">Scenario  Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#a-complete-example">A Complete Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Semantics_of_Describing_Scenes.html">Semantics of Describing Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build_specifications_by_AVUnit.html">Define Specifications by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semanticss_of_Defining_Specifications.html">Semantics of Describing Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overall_BNF.html">Overall BNF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extension to simulations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulations.html">AVUnit connected to Simulator and Autonomous Vehicle</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AVUnit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Generate Scenarios by AVUnit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Generate_scenarios_by_AVUnit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="generate-scenarios-by-avunit">
+<h1>Generate Scenarios by AVUnit<a class="headerlink" href="#generate-scenarios-by-avunit" title="Permalink to this headline">¶</a></h1>
+<p>A key distinction of AVUnit in comparison to other languages for scenes is that it  provides  a user-friendly and domain-specific way to specifys cenarios, in which objects are executing  independent journey plans in an environment that is dynamically changing. Without specifying scenarios, many real-world behaviours of AVs may not be properly tested. Asking users to fully specify scenarios, however, would be overwhelming, so AVUnit strikes  a  balance by  allowing  them  to  specify  some  key  parts  (e.g. journey waypoints) while leaving the rest to automatic test generation. In  particular, AVUnit supports  an  agent-oriented  style of programming, in which the motions of individual objects arespecified in a fully decoupled way. We will present the key features of the language that support this design in this section.</p>
+<div class="section" id="describe-a-scenario">
+<h2>Describe a Scenario<a class="headerlink" href="#describe-a-scenario" title="Permalink to this headline">¶</a></h2>
+<p>In our desgin, a scenario is composed of six elements: <code class="docutils literal notranslate"><span class="pre">map</span></code>，<code class="docutils literal notranslate"><span class="pre">ego</span> <span class="pre">vehicl</span></code> ，<code class="docutils literal notranslate"><span class="pre">npc</span> <span class="pre">vehicles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">pedestrians</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">obstacles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">environment</span></code> [Optional]. We are going to explore it in this part.</p>
+<div class="section" id="map">
+<span id="type-map"></span><h3>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">map</span></code>: Just specify the name of the loaded map.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>map ::= load(mapName)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> here is type of <a class="reference internal" href="types/value_types.html#type-string"><span class="std std-ref">String</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>map_name = &quot;san_francisco&quot;;
+map = load(map_name);
+</pre></div>
+</div>
+</div>
+<div class="section" id="ego-vehicle">
+<span id="type-egovehicle"></span><h3>Ego Vehicle<a class="headerlink" href="#ego-vehicle" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Ego</span> <span class="pre">Vehicle</span></code>: The ego vehicle (<code class="docutils literal notranslate"><span class="pre">egoVehicle</span></code>) is the autonomous vehicle targeted for testing. In AVUnit scenarios it is specified using the keyword <code class="docutils literal notranslate"><span class="pre">AV</span></code>, followed by some optional parameters:</p>
+<ul class="simple">
+<li><p>The initial state of the ego  vehicle;</p></li>
+<li><p>The  target  state;</p></li>
+<li><p>The type of the vehicle.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that if the ego vehicle is generated without these optional parameters, then two randomly generated states will  be  assigned,  and  a  default  vehicle  type  will  be  assigned (e.g. “Lincoln2017MKZ (Apollo 5.0)” for Apollo running with LGSVL).  Note  that  the  language  does  not  require  the  user to  specify  anything  about  the  ego  vehicle’s  motion:  this  is because it is fully controlled by the ADS under test.</p>
+</div>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>egoVehicle::= &#39;AV(&#39; [state &#39;,&#39; state[ &#39;,&#39; type]] &#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">state</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-state"><span class="std std-ref">State</span></a>. The <code class="docutils literal notranslate"><span class="pre">type</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-objectype"><span class="std std-ref">Object Type</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ego_init_state = (ENU (553090.05, 4182687.8));
+ego_target_state = (&quot;lane_40&quot;-&gt;50);
+vehicle_type = (&quot;Lincoln MKZ 2017&quot;);
+ego_vehicle = AV(ego_init_state, ego_target_state,vehicle_type);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example specifies  that  the  ego  vehicle  needs  to  move  from the start position (553090.05,4182687.8) in  the  ENU  coordinate system to the lane position which is 50 meters away from the start of Lane “lane40”; its model is Lincoln MKZ 2017.</p>
+</div>
+</div>
+<div class="section" id="npc-vehicles">
+<span id="type-npcvehicle"></span><h3>Npc Vehicles<a class="headerlink" href="#npc-vehicles" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Npc</span> <span class="pre">Vehicles</span></code>: Scenes can be populated with NPC  vehicles (<code class="docutils literal notranslate"><span class="pre">npcVehicle</span></code>). Similar to the <a class="reference internal" href="#type-egovehicle"><span class="std std-ref">egoVehicle</span></a>, AVUnit allows  the  user  to  (optionally)  specify  initial  and  target  states,  but  as  they  are  not controlled  by  the  ADS  under  test,  the  user  can  also  specify their motion. We can use <code class="docutils literal notranslate"><span class="pre">npcVehicleList</span></code> to represent NPC vehicles.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>npcVehicle ::= &#39;Vehicle(&#39;[state[&#39;,&#39;[motion] [&#39;,&#39;[state] [&#39;,&#39;type]]]]&#39;)&#39;
+multipleNpcVehicles = npcVehicle | multipleNpcVehicles, npcVehicle
+npcVehicleList ::= &#39;{&#39;[&lt;multipleNpcVehicles&gt;]&#39;}&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">motion</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-motion"><span class="std std-ref">Motion</span></a>. The <code class="docutils literal notranslate"><span class="pre">state</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-state"><span class="std std-ref">State</span></a>. The <code class="docutils literal notranslate"><span class="pre">type</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-objectype"><span class="std std-ref">Object Type</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>heading1 = 10 deg related to ego_vehicle;
+npc_init_state = (&quot;lane_39&quot;-&gt;20, , 6.0);
+npc1_type = &quot;Sedan&quot;;
+npc_state1 = ((&quot;lane_759&quot;-&gt;1, ,6), (&quot;lane_759&quot;-&gt;20, ,3),(&quot;lane_77&quot;-&gt;1, ,6), (&quot;lane_77&quot;-&gt;30, ,5));
+npc1_destination = (&quot;lane_77&quot;-&gt;150);
+npc1 = Vehicle(npc_init_state, Waypoint(npc_state1), npc1_destination, (npc1_type));
+npc_init_state3 = (&quot;lane_779&quot;-&gt;0.0, , 1.0);
+npc2 = Vehicle(npc_init_state3);
+npc = {npc1, npc2};
+</pre></div>
+</div>
+</div>
+<div class="section" id="pedestrians">
+<span id="type-pedestrian"></span><h3>Pedestrians<a class="headerlink" href="#pedestrians" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Pedestrians</span></code>: Similar to the <a class="reference internal" href="#type-egovehicle"><span class="std std-ref">egoVehicle</span></a>, AVUnit allows  the  user  to  (optionally)  specify  initial  and  target  states of <code class="docutils literal notranslate"><span class="pre">Pedestrians</span></code>,  but  as  they  are  not controlled  by  the  ADS under test, the user can also specify their motion.  We can use <code class="docutils literal notranslate"><span class="pre">pedestrianList</span></code> to represent NPC vehicles.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>pedestrianList ::= &#39;{&#39;[multiplePedestrians]&#39;}&#39;
+multiplePedestrians ::= pedestrian | multiplePedestrians, pedestrian
+pedestrian ::= &#39;Pedestrian(&#39;[state[&#39;,&#39;[motion] [&#39;,&#39;[state] [&#39;,&#39;pedType]]]]&#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">motion</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-motion"><span class="std std-ref">Motion</span></a>. The <code class="docutils literal notranslate"><span class="pre">state</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-state"><span class="std std-ref">State</span></a>. The <code class="docutils literal notranslate"><span class="pre">pedType</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-objectype"><span class="std std-ref">Object Type</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ped_position = (553020.54, 4182693.69);
+ped_heading = 90 deg related to &quot;lane_38&quot;-&gt;30;
+ped_init_state= (ped_position, ped_heading, 1.0);
+ped_state_list = (((553020.54,4182693.69), ped_heading, 1.0),((553023.26, 4182671.82), ped_heading, 1.0));
+ped_motion = Waypoint(ped_state_list);
+ped_type = &quot;Howard&quot;;
+ped0 = Pedestrian(ped_init_state, ped_motion, , ped_type);
+ped = {ped0}
+</pre></div>
+</div>
+</div>
+<div class="section" id="obstacles">
+<span id="type-obstacle"></span><h3>Obstacles<a class="headerlink" href="#obstacles" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Obstacles</span></code>: In an AVUnit scenario,  a static obstacle is defined by its position and static type (e.g. sphere,box, cylinder).</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>obstacle ::= &#39;Obstacle(&#39;[position[&#39;,&#39;staticType]]&#39;)&#39;
+obstacles ::= &#39;{&#39;[multipleObstacles]&#39;}&#39;
+multipleObstacles ::= obstacle | multipleObstacles, obstacle
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">position</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-position"><span class="std std-ref">Position</span></a>. The <code class="docutils literal notranslate"><span class="pre">staticType</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-objectype"><span class="std std-ref">Object Type</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>obs_position = (553020.54, 4182693.69);
+obs_type = (sphere, 2)
+obs = Obstacle(obs_position, obs_type)
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment">
+<span id="type-environment"></span><h3>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Environment</span></code>: AVUnit allows  for  dynamically  changing environments  to  be  specified  in  scenarios.  This  is  achieved simply by specifying the weather to be simulated at different times.  We  can  specify  the  environment  explicitly (<code class="docutils literal notranslate"><span class="pre">env</span></code>),  or leave  the  parameters  empty  in  order  to  use  the  default  environment settings.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>env ::= &#39;Environment(&#39;[time&#39;,&#39;weather]&#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">time</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-time"><span class="std std-ref">Time</span></a>. The <code class="docutils literal notranslate"><span class="pre">weather</span></code> here is type of <a class="reference internal" href="types/scenset_types.html#type-weather"><span class="std std-ref">Weather</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>time = 12:00;
+weather = {rain:0.5, fog: 0.1, wetness: heavy};
+evn = Environment(time, weather);
+</pre></div>
+</div>
+</div>
+<div class="section" id="scenario-definition">
+<span id="type-scenario"></span><h3>Scenario  Definition<a class="headerlink" href="#scenario-definition" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Scenario</span></code>: Finally,  we  can  create  a  scenario  featuring  combinations  of  all  of  the  above  agents  in AVUnit using the <code class="docutils literal notranslate"><span class="pre">CreateScenario</span></code> keyword. The user specifies  the  <code class="docutils literal notranslate"><span class="pre">map</span></code>  to  load,  the  <code class="docutils literal notranslate"><span class="pre">ego</span> <span class="pre">vehicle</span></code>,  lists  of  <code class="docutils literal notranslate"><span class="pre">Npc</span> <span class="pre">Vehicles</span></code> and  <code class="docutils literal notranslate"><span class="pre">pedestrians</span></code>  (associated  with  their  independent  uniform/waypoint  motion  configurations),  a  list  of  static  <code class="docutils literal notranslate"><span class="pre">objects</span></code>,and  (optionally)  the  <code class="docutils literal notranslate"><span class="pre">environment</span></code>.  Note  that  our  simplified grammar omits the rules for lists of vehicles, pedestrians, and obstacles:  they  are  simply  comma-delimited  lists  defined  in the standard way.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>scenario ::= &#39;CreateScenario({  &#39;map&#39;;
+                                &#39;egoVehicle&#39;;
+                                &#39;npcVehicleList&#39;;
+                                &#39;pedestrianList&#39;;
+                                &#39;obstacleList&#39;;
+                                &#39;[env&#39;;&#39;]
+&#39;}&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> here is type of <a class="reference internal" href="#type-map"><span class="std std-ref">Map</span></a>. The <code class="docutils literal notranslate"><span class="pre">egoVehicle</span></code> here is type of <a class="reference internal" href="#type-egovehicle"><span class="std std-ref">Ego Vehicle</span></a>. The <code class="docutils literal notranslate"><span class="pre">npcVehicleList</span></code> here is type of <a class="reference internal" href="#type-npcvehicle"><span class="std std-ref">NPC Vehicle</span></a>. The <code class="docutils literal notranslate"><span class="pre">pedestrianList</span></code> here is type of <a class="reference internal" href="#type-pedestrian"><span class="std std-ref">Pedestrian</span></a>.  The <code class="docutils literal notranslate"><span class="pre">obstacleList</span></code> here is type of <a class="reference internal" href="#type-obstacle"><span class="std std-ref">obstacle</span></a>. The <code class="docutils literal notranslate"><span class="pre">env</span></code> here is type of <a class="reference internal" href="#type-environment"><span class="std std-ref">Environment</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>scenario0 = CreateScenario{     load(map_name);
+                                ego_vehicle;
+                                {npc1, npc2};
+                                {ped};
+                                {}; // no obstacles;
+                                env;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-complete-example">
+<span id="scenario-a-complete-example"></span><h2>A Complete Example<a class="headerlink" href="#a-complete-example" title="Permalink to this headline">¶</a></h2>
+<p>The Below picture shows  an  initial  scene  of  a  concrete  scenario,  i.e.,the input of a test case, that we want to test for the <a class="reference external" href="https://github.com/ApolloAuto/apollo">Apollo</a>  ADS on the San_Francisco map. To describe the scenario, we need to describe the motion task of the ego vehicle, the motion of <code class="docutils literal notranslate"><span class="pre">npc1</span></code>-<code class="docutils literal notranslate"><span class="pre">npc8</span></code> and the pedestrian <code class="docutils literal notranslate"><span class="pre">ped</span></code>. Let first describe the details of the scenario and give give its description in AVUnit.</p>
+<a class="reference internal image-reference" href="_images/lgsvl_example.png"><img alt="The initial scene in LGSVL." src="_images/lgsvl_example.png" style="width: 700px;" /></a>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Ego</span> <span class="pre">vehicle</span></code>:  The  task  of  the  ego  vehicle  is  to  move from the start point(553090.05,4182687.8) to the target location, which is on Lane lane40 and 50 meters away from the lane’s start position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc1</span></code>: <code class="docutils literal notranslate"><span class="pre">npc1</span></code> is 30 meters ahead to the ego vehicle with the same  direction  of  the  ego  vehicle.  It  needs  to  turn  right and reach the position that is 100 meters away to the start point of  the output lane.  The initial speed  is 6m/s, and the  speeds  on  the  junction  lane  and  the  output  lane  are 2m/s and 6m/s, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc2</span></code>:  The  initial  relative  position  of <code class="docutils literal notranslate"><span class="pre">npc2</span></code> with  respect to  the  ego  vehicle’s  initial  position  is (−50,0) and  the heading is same with the ego vehicle. The motion of npc2 is described by a set of waypoints with specified speed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc3</span></code>: <code class="docutils literal notranslate"><span class="pre">npc3</span></code> is described by an initial state, i.e., the initial position is 10 meters to the start poition of Lane lane38 and  the  initial  speed  is  5.6m/s,  and  the  target  position which is 100 meters to the start position of Lane lane41.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc4</span></code>: <code class="docutils literal notranslate"><span class="pre">npc4</span></code> is  located  at  the  position  that  is  10  meters away to the start point of lane lane42 and the heading is opposite to the ego vehicle. It need to move in a constant speed 8m/s along any possible lanes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc5</span></code>: The initial position of <code class="docutils literal notranslate"><span class="pre">npc5</span></code> is 30 meters away to the start point of lane lane42 and is required to move in a  constant  speed  8m/s to  the  destination  located  at  the point 50 meters away to the start of lane lane76.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc6</span></code>: The initial position of <code class="docutils literal notranslate"><span class="pre">npc6</span></code> is 40 meters away to the start point of lane lane42 and is required to move to lane lane79. The initial speed is 7m/s. When it moves 1  meter  on  Lane  lane761,  the  speed  changes  to  4m/s,then to 6m/s after moving 3 meters on Lane lane79. It stops after moving 50m on Lane lane79.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc7</span></code>: The behavior of <code class="docutils literal notranslate"><span class="pre">npc7</span></code> is similar with <code class="docutils literal notranslate"><span class="pre">npc6</span></code>, except that its initial position is 50 meters away to the start pointof  Lane  lane42  and  is  required  to  pass  through  Lanes lane762 and lane78.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">npc8</span></code>: <code class="docutils literal notranslate"><span class="pre">npc8</span></code> is stopped on Lane lane36 and is 40 meters away  to  the  start  of  lane36.  The  orientation  is  perpendicular to that of the ego vehicle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ped</span></code>: <code class="docutils literal notranslate"><span class="pre">ped</span></code> moves   along   the   crosswalk   with   a   constant  speed 1m/s.  The  initial  and  target  positions  are (553006.37,4182693.24) and (553006.37,4182671.82). It   needs   to   pass   through   the   intermediate   position (553003.37,4182681.82).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weather</span></code>:  The  time  of  the  day  is  12:00,  and  the  weather is  raining,  fogging  and  wetness,  whose  degrees  are  0.5, 0.1, and heavy, respectively.</p></li>
+</ul>
+<p>Such a complicated scenario can be described  by AVUnit as follows.</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>car_model = &quot;Lincoln MKZ 2017&quot;;
+ego_init_position = ENU (553090.0522572036,4182687.8);
+ego_init_state = (ego_init_position);
+ego_target_position = &quot;lane_40&quot;-&gt;50;
+ego_target_state = (ego_target_position);
+vehicle_type = (car_model);
+ego_vehicle = AV(ego_init_state, ego_target_state,vehicle_type);
+
+npc1_type = &quot;Sedan&quot;;
+npc1_heading = 0 deg related to ego_vehicle;
+npc1_init_position = IMU (30, 0);
+npc1_init_state = (npc1_init_position, npc1_heading,6.0);
+npc1_state = ((&quot;lane_759&quot;-&gt;1, ,2),(&quot;lane_77&quot;-&gt;1, ,6));
+npc1_destination = (&quot;lane_77&quot;-&gt;100);
+npc1 = Vehicle(npc1_init_state, Waypoint(npc1_state), npc1_destination, (npc1_type));
+...
+ped_position = (553006.37, 4182693.24);
+ped_init_state= (ped_position, , 1.0);
+ped_state_list = (((553003.37, 4182681.82), , 1.0));
+ped_destination_state = ((553006.37, 4182671.82))
+ped_motion = Waypoint(ped_state_list);
+ped = Pedestrian(ped_init_state, ped_motion,ped_destination_state);
+
+time = 12:00;
+weather = {rain:0.5, fog: 0.1, wetness: heavy};
+evn = Environment(time, weather);
+
+scenario0 = CreateScenario{     load(map_name);
+                                ego_vehicle;
+                                {npc1, npc2, npc3, npc4, npc5, npc6,npc7, npc8};
+                                {ped};
+                                {}; // no obstacles;
+                                evn
+};
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Semantics_of_Describing_Scenes.html" class="btn btn-neutral float-right" title="Semantics of Describing Scenes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="types.html" class="btn btn-neutral float-left" title="Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SUN Yang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

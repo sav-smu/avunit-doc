@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Overall BNF &mdash; AVUnit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AVUnit connected to Simulator and Autonomous Vehicle" href="simulations.html" />
+    <link rel="prev" title="Semantics of Describing Specifications" href="Semanticss_of_Defining_Specifications.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AVUnit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction_to_AVUnit.html">Introduction to AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Install_AVUnit.html">Install AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AVUnit_examples.html">AVUnit examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Language Description</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generate_scenarios_by_AVUnit.html">Generate Scenarios by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semantics_of_Describing_Scenes.html">Semantics of Describing Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build_specifications_by_AVUnit.html">Define Specifications by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semanticss_of_Defining_Specifications.html">Semantics of Describing Specifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overall BNF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-symbols-and-arithmatic-operations">Basic Symbols and Arithmatic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scenario-part">Scenario Part</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trace-part">Trace Part</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specification-part">Specification Part</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overall-expression-assignment">Overall Expression Assignment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extension to simulations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulations.html">AVUnit connected to Simulator and Autonomous Vehicle</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AVUnit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Overall BNF</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Overall_BNF.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overall-bnf">
+<h1>Overall BNF<a class="headerlink" href="#overall-bnf" title="Permalink to this headline">¶</a></h1>
+<p>Backus-Naur notation (shortly <a class="reference external" href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">BNF</a>) is a formal mathematical way to describe a language, (to describe the syntax of the programming languages). In this section, we will provide the detailed BNF file for reference. All the grammar rules of AVUnit can be traced in the BNF document.</p>
+<p>The overall grammar rules can be devided into a few parts: <a class="reference internal" href="#basic-arithmatic-operations-bnf"><span class="std std-ref">Basic Symbols and Arithmatic Operations</span></a> , <a class="reference internal" href="#scenario-part-bnf"><span class="std std-ref">Scenario Description</span></a> , <a class="reference internal" href="#specification-part-bnf"><span class="std std-ref">Specification Description</span></a> and <a class="reference internal" href="#expression-assignment-bnf"><span class="std std-ref">Overall Expression Assignment</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section’s document is more suitable for developers. If you are new to BNF, please refer to <a class="reference internal" href="Generate_scenarios_by_AVUnit.html"><span class="doc">Generate Scenarios</span></a> and <a class="reference internal" href="Build_specifications_by_AVUnit.html"><span class="doc">Build Specifications</span></a>.</p>
+</div>
+<div class="section" id="basic-symbols-and-arithmatic-operations">
+<span id="basic-arithmatic-operations-bnf"></span><h2>Basic Symbols and Arithmatic Operations<a class="headerlink" href="#basic-symbols-and-arithmatic-operations" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>&lt;letter&gt; ::= a|…|z|A|…|Z
+&lt;digit&gt; ::= 0|&lt;non zero digit&gt;
+&lt;non zero digit&gt; ::= 1|…|9
+&lt;symbol&gt; ::= &quot; &quot; | &quot;~&quot; | &quot;`&quot; | &quot;!&quot; | &quot;@&quot; | &quot;#&quot; | &quot;$&quot; | &quot;%&quot; | &quot;^&quot; | &quot;&amp;&quot; | &quot;*&quot; | &quot;(&quot; | &quot;)&quot; | &quot;_&quot; | &quot;-&quot; | &quot;+&quot; | &quot;=&quot; | &quot;\&quot; | &quot;|&quot; | &quot;]&quot; | &quot;}&quot; | &quot; [&quot; | &quot;{&quot; | &quot;;&quot; | &quot;:&quot; | &quot;’&quot; | &quot;”&quot; | &quot;/&quot; | &quot;?&quot; | &quot;&gt;&quot; | &quot;&lt;&quot; | &quot;,&quot; | &quot;.&quot;
+&lt;identifier&gt; ::= &lt;first character&gt;|&lt;variable name&gt;,&lt;character&gt;
+&lt;character&gt;::=&lt;first character&gt;|&lt;digit&gt;
+&lt;first character&gt;::=&lt;letter&gt;|“_”
+
+&lt;operator1&gt; ::= + | -
+&lt;operator2&gt; ::= * | / |
+&lt;operator3&gt; ::= ^
+
+&lt;string&gt; ::= &lt;input character&gt;|&lt;string&gt;&lt;input character&gt;
+//input character is the set of basic characters encoded by ASCII
+&lt;input character&gt; ::= &lt;letter&gt; | &lt;digit&gt; | &lt;symbol&gt;
+&lt;real value&gt; ::= [&lt;signal&gt;]&lt;number&gt;“.”&lt;number&gt;
+&lt;signal&gt; ::= + | -
+&lt;number&gt;::= &lt;digit&gt;|&lt;number&gt;&lt;digit&gt;
+&lt;coordinate&gt; ::= “(”&lt;real value&gt;, &lt;real value&gt;[,&lt;real value&gt;] “)”
+&lt;string expression&gt; ::= &lt;string&gt;|&lt;string expression&gt; “+” &lt;string expression&gt;
+&lt;real value expression&gt; ::= &lt;term1&gt;|&lt;real value expression&gt; &lt;operator1&gt; &lt;term1&gt;
+&lt;term1&gt; ::= &lt;term2&gt; | &lt;term1&gt; &lt;operator2&gt; &lt;term2&gt;
+&lt;term2&gt; ::= &lt;term3&gt;|&lt;term2&gt; &lt;operator3&gt;&lt;term3&gt;
+&lt;term3&gt; ::= &lt;real value&gt;| “(”real value expression“)”
+&lt;coordinate expression&gt; ::= &lt;coordinate&gt;|&lt;coordinate expression&gt; &lt;operator1&gt; &lt;coordinate&gt;
+
+&lt;real value expression&gt; ::= &lt;term1&gt; |&lt;real value expression&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="scenario-part">
+<span id="scenario-part-bnf"></span><h2>Scenario Part<a class="headerlink" href="#scenario-part" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>&lt;scenario&gt; ::= CreateScenario”{”&lt;map&gt;;
+&lt;ego vehicle&gt;;
+&lt;npc vehicles&gt;;
+&lt;pedestrians&gt;;
+&lt;obstacles&gt;;
+{[&lt;Env&gt;]};”}”
+
+&lt;map&gt; ::= load(&lt;map name&gt;)
+&lt;map name&gt; ::= “””&lt;string expression&gt;”””
+
+&lt;ego vehicle&gt; ::= AV“(”[&lt;parameter_list_ego&gt;]”)”
+&lt;parameter_list_ego&gt; ::= &lt;state&gt;,&lt;state&gt;[,&lt;vehicle type&gt;]
+        //first &lt;state&gt; is the initial state of the ego vehicle
+        //second &lt;state&gt; is the target state of the ego vehicle
+        //without &lt;vehicle type&gt;, use the default one.
+&lt;state&gt; ::= “(”&lt;position&gt;[,[&lt;heading&gt;][,&lt;speed&gt;]]”)”
+// the format can be: (position), (position, heading), (position, heading, speed), (position, ,speed)
+&lt;position&gt; ::= &lt;coordinate position&gt;|&lt;lane position&gt;
+&lt;coordinate position&gt; ::= [&lt;coordinate frame&gt;]&lt;coordinate expression&gt;
+&lt;coordinate frame&gt; ::= IMU | ENU | WGS84
+        // IMU: vehicle coordinate system, right-forward-up, origin is the position of the vehicle
+// ENU: east-north-up, map origin is the origin of the coordinate
+// WGS84: world geodetic system
+// default coordinate frame: ENU
+
+&lt;lane position&gt; ::= &lt;lane ID&gt; “-““&gt;” &lt;real value expression&gt;
+// &lt;lane ID&gt; -&gt; &lt;real value&gt;: the distance of the point to the start point of &lt;lane ID&gt; is &lt;real value&gt;
+&lt;lane ID&gt; ::= &lt;string&gt;|[[&lt;signal&gt;]&lt;number&gt;”.”] [&lt;signal&gt;]&lt;number&gt;
+
+&lt;heading&gt; ::= &lt;angle value&gt; &lt;unit&gt; [related to &lt;direction&gt;]
+// default value: the direction to the lane where the position is on
+&lt;angle value&gt; ::= &lt;real value expression&gt;|&lt;pi value&gt;
+&lt;pi value&gt; ::= [&lt;real value expression&gt;]pi
+&lt;unit&gt; ::= deg | rad
+&lt;direction&gt; ::= &lt;lane position&gt;| &lt;ego identifier&gt;|&lt;npc identifier&gt;|&lt;pedestrian identifier&gt; |EGO
+
+&lt;speed&gt; ::= &lt;real value expression&gt;
+
+&lt;vehicle type&gt; ::= “(”&lt;type&gt;[,&lt;color&gt;]”)”
+&lt;type&gt; ::= &lt;specific type&gt;|&lt;general type&gt;
+&lt;specific type&gt; ::= “””&lt;string expression&gt;”””
+//model of the vehicle
+&lt;general type&gt; ::= car|bus|Van|truck|bicycle|motorbicycle|tricycle
+&lt;color&gt; ::= &lt;color list&gt;|&lt;rgb color&gt;
+&lt;color list&gt; ::= red|green|blue|black|white
+&lt;rgb color&gt; ::= “(“&lt;rgb_value&gt;,&lt;rgb_value&gt;,&lt;rgb_value&gt;“)”
+&lt;rgb_value&gt; ::= &lt;digit&gt;|&lt;non zero digit&gt;&lt;digit&gt;|1&lt;digit&gt;&lt;digit&gt;|2&lt;digit_2&gt;&lt;digit&gt;|25&lt;digit_3&gt;
+&lt;digit_2&gt; ::= 0|…|4
+&lt;digit_3&gt; ::= 0|…|5
+
+&lt;npc vhielces&gt; ::= ”{”[&lt;multiple npc vehicles&gt;]”}”
+&lt;multiple npc vehicles&gt; = &lt;npc vehicle&gt;|&lt;multiple npc vehicles&gt;,&lt;npc vehicle&gt;
+&lt;npc vehicle&gt; ::= Vehicle”(”[&lt;parameter_list_npc&gt;]”)”
+&lt;parameter_list_npc&gt; ::= &lt;state&gt; [,[&lt;vehicle motion&gt;] [,[&lt;state&gt;] [,&lt;vehicle type&gt;]]]
+//first &lt;state&gt; is the initial state of a vehicle
+//second &lt;state&gt; is the target state of a vehicle
+//default motion: uniform form motion along paths
+&lt;vehicle motion&gt; ::= &lt;uniform motion&gt;|&lt;waypoint motion&gt;
+&lt;uniform motion&gt; ::= &lt;uniform index&gt;”(”&lt; state&gt;”)”
+        // move with the given speed in &lt;state&gt;
+&lt;uniform index&gt; ::= uniform|Uniform
+&lt;waypoint motion&gt; ::= &lt;waypoint index&gt;”(”&lt;state_list&gt;”)”
+&lt;waypoint index&gt; ::= Waypoint|W|WP|waypoint|w|wp
+&lt;state_list&gt; ::= &lt;state&gt;|&lt;state_list&gt;,&lt;state&gt;
+
+&lt;pedestrians&gt; ::= ”{”[&lt;multiple pedestrians&gt;]”}”
+&lt;multiple pedestrians&gt; = &lt;pedestrian&gt;|&lt;multiple pedestrians&gt;,&lt;pedestrian&gt;
+&lt;pedestrian&gt; ::= Pedestrian”(”&lt;parameter_list_ped&gt;|*”)”
+&lt;parameter_list_ped&gt; ::= &lt;state&gt;[,[&lt;pedestrian motion&gt;][,[&lt; state&gt;][,&lt;pedestrian type&gt;]]]
+&lt;pedestrian motion&gt; ::= &lt;uniform motion&gt;|&lt;waypoint motion&gt; |&lt;random motion&gt;
+&lt;random motion&gt; ::= Random(&lt;state&gt;)
+&lt;pedestrian type&gt; ::= &lt;specific type&gt;|&lt;pedestrian general type&gt;
+&lt;pedestrian general type&gt; ::= “(”&lt;height&gt;,&lt;color&gt;”)”
+//color means the color of cloth
+&lt;height&gt; ::= &lt;real value expression&gt;
+
+&lt;obstacles&gt; ::= “{“[&lt;multiple obstacles&gt;]”}”
+&lt;multiple obstacles&gt; ::= &lt;obstacle&gt;|&lt;multiple obstacles&gt;,&lt;obstacle&gt;
+&lt;obstacle&gt; ::= Obstacle“(”[&lt;parameter_list_obs&gt;]”)”
+&lt;parameter_list_obs&gt; ::= &lt;position&gt;[,&lt;shape&gt;]
+&lt;shape&gt; ::= &lt;sphere&gt; | &lt;box&gt; | &lt;cone&gt; | &lt;cylinder&gt;
+&lt;sphere&gt; ::= “(“ sphere, &lt;real value&gt;”)”
+&lt;box&gt; ::= “(“box, &lt;real value&gt;, &lt;real value&gt;, &lt;real value&gt;”)”
+&lt;cone&gt; ::= “(“cone, &lt;real value&gt;, &lt;real value&gt;, &lt;real value&gt;”)”
+&lt;cylinder&gt; ::= “(“cylinder, &lt;real value&gt;, &lt;real value&gt;, &lt;real value&gt;”)”
+
+&lt;Env&gt; ::= Environment“(“[&lt;parameter_list_env&gt;]”)”
+&lt;parameter_list_env&gt; ::= &lt;time expression&gt;,&lt;weather&gt;
+&lt;time expression&gt; ::= &lt;time&gt;|&lt;time expression&gt; &lt;vector operator&gt; &lt;time&gt;
+&lt;time&gt; ::= &lt;hour&gt;:&lt;minute&gt;
+&lt;hour&gt; ::= &lt;digit&gt;|1&lt;digit&gt;|2&lt;digit3&gt;
+&lt;digit3&gt; ::= 0|…|3
+&lt;minute&gt; ::= &lt;digit5&gt;&lt;digit&gt;
+&lt;digit5&gt; ::= 0|…|5
+
+&lt;weather&gt; ::= “{”&lt;weather statements&gt;”}”
+&lt;weather statements&gt; ::= &lt;weather statement&gt;|&lt;weather statements&gt;,&lt;weather statement&gt;
+&lt;weather statement&gt; ::= “‘”&lt;kind&gt;:“’” &lt;weather continuous index&gt;|&lt;weather discrete level&gt;;
+&lt;kind&gt; ::= sunny|rain|snow|fog|wetness|cloudiness
+//this should be set based on simulator capability
+&lt;weather continuous index&gt; ::= &lt;proper fraction&gt;|1
+&lt;proper fraction&gt; ::= 0.&lt;number&gt;
+&lt;weather discrete level&gt; ::= light|middle|heavy
+</pre></div>
+</div>
+</div>
+<div class="section" id="trace-part">
+<span id="trace-part-bnf"></span><h2>Trace Part<a class="headerlink" href="#trace-part" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>&lt;trace declaration&gt; ::= Trace &lt;trace&gt; = EXE(&lt;scenario&gt;)
+        Note that the Trace object is defined as a dictionary in the following format:
+        [{
+                “time”: &lt;time stamp&gt;, “ego”: &lt;ego state&gt;,
+                “perception”: {&lt;agent identifier&gt;: &lt; perceived state&gt;,
+                &lt;agent identifier&gt;: &lt; perceived state&gt;, … ,
+                traffic’:{‘light’: (light status, distance), ‘stop sign’: [stop sign status, distance], ‘speed limit’: [speed range, distance]}
+        },
+        “truth”: {&lt;agent identifier&gt;: &lt;ground truth state&gt;,
+                &lt;agent identifier&gt;: &lt; ground truth state&gt;, … ,
+                ‘traffic’:{‘light’: (light status, distance), ‘stop sign’: [stop sign status, distance], ‘speed limit’: [speed range, distance]}
+        },
+        }]
+        Example:
+        [{
+                ‘time’: 0,
+                ’ego’: ((laneID, offset), orientation, velocity, acceleration),
+                ‘perception’: {
+                ‘npc’: ((laneID, offset), orientation, velocity, size),
+                …
+                ‘pedestrian’: ((laneID, offset), orientation, velocity, size),
+                …
+                ‘traffic’: {‘TrafficLight’: [red, 30.0], ‘StopSign’: [0, infinit], ‘SpeedLimit’: [(0, 60), 20.0]}},
+        ‘truth’: {
+                ‘npc’: ((laneID, offset), orientation, velocity, size),
+                …
+                ‘pedestrian’: ((laneID, offset), orientation, velocity, size),
+                …
+                ‘traffic’: {‘TrafficLight’: [status={None, red, green, yello}, distance to ego],
+                ‘StopSign’: [status={0, 1}, distance to ego],
+                ‘SpeedLimit’: [(lower bound, upper bounder),
+                distance to ego]}
+        },
+        …
+        ]
+</pre></div>
+</div>
+</div>
+<div class="section" id="specification-part">
+<span id="specification-part-bnf"></span><h2>Specification Part<a class="headerlink" href="#specification-part" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>//declare &lt;trace&gt;
+&lt;trace declaration&gt; ::= Trace &lt;trace&gt; = EXE(&lt;scenario&gt;)
+&lt;ego declaration&gt; ::= &lt;ego identifier&gt; = &lt;ego vehicle&gt;
+&lt;npc declaration &gt; ::= &lt;npc identifier&gt; = &lt;npc vehicle&gt;
+&lt;pedestrian declaration&gt; ::= &lt;pedestrian identifier&gt; = &lt;pedestrian&gt;
+&lt;obstacle declaration&gt; ::= &lt;obstacle identifier&gt; = &lt;obstacle&gt;
+&lt;ego identifier&gt; ::= &lt;identifier&gt;
+&lt;npc identifier&gt; ::= &lt;identifier &gt;
+&lt;pedestrian identifier&gt; ::= &lt;identifier&gt;
+&lt;obstacle identifier&gt; ::= &lt;identifier&gt;
+
+&lt;ego state&gt; ::= &lt;trace&gt;“[‘”ego“’]”
+&lt;agent ground truth&gt; ::= &lt;trace&gt;“[‘”truth“’]” “[‘”&lt;agent identifier&gt;“’]”
+&lt;agent state&gt; ::= &lt;trace&gt;“[‘”perception “’]”“[‘”&lt;agent identifier&gt;“’]”
+&lt;agent identifier&gt; ::= &lt;ego identifier&gt;|&lt;npc identifier&gt;|&lt;pedestrian identifier&gt;|&lt;obstacle identifier&gt;
+
+
+&lt;compare operator&gt; ::= ==|&lt;|&lt;=|&gt;|&gt;=|!=
+&lt;temporal operator1&gt; ::= G | F |X|G&lt;I&gt;|F&lt;I&gt;| X&lt;I&gt;
+&lt;temporal operator2&gt; ::= U | U&lt;I&gt;
+&lt;I&gt; ::= “[”&lt;real value&gt;”:”&lt;real value&gt;”]”
+&lt;trace&gt; |= &lt;general assertion&gt;|&lt;traffic rules&gt;
+
+&lt;general assertion&gt; ::= &lt;first assertion&gt; | &lt;general assertion&gt; “-&gt;” &lt;first assertion&gt;
+&lt;first assertion&gt; ::= &lt;second assertion&gt; | &lt;first assertion&gt; &amp; &lt;second assertion&gt; |&lt;first assertion&gt; “|” &lt;second assertion&gt;
+&lt;second assertion&gt; ::= &lt;third assertion&gt; | &lt;second assertion&gt; U &lt;third assertion&gt; | &lt;second assertion&gt; U&lt;I&gt; &lt;third assertion&gt;
+&lt;third assertion&gt; ::= &lt;fourth assertion&gt; | ~&lt;third assertion&gt; | &lt;temporal operator1&gt; &lt;third assertion&gt;
+&lt;fourth assertion&gt; ::= &lt;atom predicate&gt; | “(”general assertion“)”
+
+&lt;atom predicate&gt; ::= &lt;spec expression&gt; &lt;compare operator&gt; &lt;spec expression&gt;
+&lt;spec expression&gt; ::= &lt;spec expresstion1&gt; |&lt;spec expression&gt;&lt;operator1&gt;&lt;spec expression1&gt;
+&lt;spec expression1&gt; ::= &lt;spec expression2&gt;|&lt;spec expression1&gt; &lt;operator2&gt; &lt;spec expression2&gt;
+&lt;spec expression2&gt; ::= &lt;atom expression&gt;| “(”spec expression“)”
+
+&lt;atom expression&gt; ::= &lt;perception difference expression &gt;|&lt;distance expression&gt;|&lt;velocity expression&gt;|&lt;speed expression&gt;|&lt;acceleration expression&gt;|&lt;real value&gt;
+
+&lt;perception difference expression&gt; ::= diff “(”&lt;agent state&gt;, &lt;agent ground truth&gt;“)”
+
+&lt;distance expression&gt; ::= dis“(”&lt;position element&gt;, &lt; position element &gt;“)”
+&lt;position element&gt; ::= &lt;object state&gt; |&lt;position&gt;
+&lt;object state&gt; ::= &lt;ego state&gt;|&lt;agent state&gt;|&lt;agent ground truth&gt;
+
+&lt;velocity expression&gt; ::= vel“(”&lt;velocity element&gt;, &lt;velocity element&gt;“)”
+&lt;velocity element&gt; ::= &lt;object state&gt; |&lt;velocity&gt;
+&lt;velocity&gt; ::= &lt;coordinate&gt;
+
+&lt;speed expression&gt; ::= spd“(”&lt;speed element&gt;, &lt;speed element&gt;“)”
+&lt;speed element&gt; ::= &lt;object state&gt; |&lt;speed&gt;
+
+&lt;acceleration expression&gt; ::= acc“(”&lt;acceleration element&gt;, &lt;acceleration element&gt; “)”
+&lt;acceleration element&gt; ::= &lt;object state&gt; |&lt;acceleration &gt;
+&lt;acceleration&gt; ::= &lt;coordinate&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="overall-expression-assignment">
+<span id="expression-assignment-bnf"></span><h2>Overall Expression Assignment<a class="headerlink" href="#overall-expression-assignment" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>&lt;variable declaration&gt; ::= &lt;identifier&gt; = &lt;expression&gt;
+&lt;expression&gt; ::= &lt;string&gt;|&lt;real value&gt;|&lt;number&gt;|&lt;coordinate&gt;|&lt;string expression&gt;|
+&lt;real value expression&gt;|&lt;coordinate expression&gt;|&lt;scenario&gt;|&lt;map&gt;|&lt;map name&gt;|
+&lt;ego vehicle&gt;|&lt;state&gt;|&lt;position&gt;|&lt;lane position&gt;|&lt;lane ID&gt;|&lt;heading&gt;|&lt;angle value&gt;|
+&lt;direction&gt;|&lt;speed&gt;|&lt;vehicle type&gt;|&lt;type&gt;|&lt;color&gt;|&lt;npc vhielces&gt;|&lt;npc vehicle&gt;|
+&lt;vehicle motion&gt;|&lt;state_list&gt;|&lt;pedestrians&gt;|&lt;pedestrian&gt;|&lt;pedestrian motion&gt;|
+&lt;pedestrian type&gt;|&lt;height&gt;|&lt;obstacles&gt;|&lt;obstacle&gt;|&lt;shape&gt;|&lt;Env&gt;|&lt;time expression&gt;|
+&lt;time&gt;|&lt;weather&gt;|&lt;weather statement&gt;|&lt;weather continuous index&gt;|&lt;weather discrete level&gt;|
+&lt;general assertion&gt;|&lt;atom predicate&gt;|&lt;atom expression&gt;|&lt;perception difference expression&gt;|
+&lt;auto perception difference expression&gt;|&lt;distance expression&gt;|&lt;auto distance expression&gt;|
+&lt;position element&gt;|&lt;velocity expression&gt;|&lt;auto velocity expression&gt;|&lt;velocity element&gt;|
+&lt;velocity&gt;|&lt;speed expression&gt;|&lt;auto speed expression&gt;|&lt;speed element&gt;|&lt; acceleration expression&gt;|
+&lt;auto acceleration expression&gt;| acceleration element&gt; |&lt;acceleration&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="simulations.html" class="btn btn-neutral float-right" title="AVUnit connected to Simulator and Autonomous Vehicle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Semanticss_of_Defining_Specifications.html" class="btn btn-neutral float-left" title="Semantics of Describing Specifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SUN Yang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+name: docs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - sphinx==4.1.1
+  - pip:
+    - sphinx_rtd_theme==0.5.2

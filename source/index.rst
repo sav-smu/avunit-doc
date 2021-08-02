@@ -6,57 +6,56 @@
 Welcome to AVUnit's documentation!
 ==================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Explore our guides and examples for using AVUnit.
+
+Get started :doc:`here <Introduction_to_AVUnit>`.
 
 
+.. warning::
 
-Indices and tables
-==================
+  AVUnit is still under developing, this version's source code hasn't been published. We will publish
+  the source code as soon as possible. 
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
-$project
-========
+.. _translations:
 
-$project will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
-
-Look how easy it is to use:
-
-    import project
-    # Get your stuff done
-    project.do_stuff()
-
-Features
---------
-
-- Be awesome
-- Make things faster
-
-Installation
+Translations
 ------------
 
-Install $project by running:
+There is a plan to translate this documentation into several languages.
+They have varying degrees of completeness and up-to-dateness(all not available at now stage). The English
+version stands as a reference.
 
-    install project
+* `Simplified Chinese <https://learnblockchain.cn/docs/solidity/>`_ (not available)
 
-Contribute
-----------
+Table of Contents
+================================
 
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
+.. :ref:`Keyword Index <genindex>`, :ref:`Search Page <search>`
 
-Support
--------
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting started
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@google-groups.com
+   Introduction_to_AVUnit.rst
+   Install_AVUnit.rst
+   AVUnit_examples.rst
 
-License
--------
+.. toctree::
+   :maxdepth: 2
+   :caption: Language Description 
 
-The project is licensed under the BSD license.
+   types.rst
+   Generate_scenarios_by_AVUnit.rst
+   Semantics_of_Describing_Scenes.rst
+   Build_specifications_by_AVUnit.rst
+   Semanticss_of_Defining_Specifications.rst
+   Overall_BNF.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Extension to simulations
+
+   simulations.rst
+
+   

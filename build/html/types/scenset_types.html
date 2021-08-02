@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Special Types &mdash; AVUnit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AVUnit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction_to_AVUnit.html">Introduction to AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install_AVUnit.html">Install AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AVUnit_examples.html">AVUnit examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Language Description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Generate_scenarios_by_AVUnit.html">Generate Scenarios by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Semantics_of_Describing_Scenes.html">Semantics of Describing Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Build_specifications_by_AVUnit.html">Define Specifications by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Semanticss_of_Defining_Specifications.html">Semantics of Describing Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overall_BNF.html">Overall BNF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extension to simulations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulations.html">AVUnit connected to Simulator and Autonomous Vehicle</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AVUnit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Special Types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/types/scenset_types.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="special-types">
+<span id="id1"></span><h1>Special Types<a class="headerlink" href="#special-types" title="Permalink to this headline">¶</a></h1>
+<p>The following types are specially designed for AVUnit, they are based on the types of <a class="reference internal" href="value_types.html#basic-types"><span class="std std-ref">basic types</span></a>. These types can be utilized to describe the scenarios by details.</p>
+<div class="section" id="position">
+<span id="type-position"></span><span id="index-0"></span><h2>Position<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Position</span></code>: This type can describe position of objects. In AVUnit, the positions of different objects (including the car under test, NPCs, and pedestrians) in scenes are specified using one of two kinds of positional references:
+(1) coordinates, i.e. a 2D or 3D vector expression; or (2) lanepositions, a position relative to a lane’s  starting point.</p>
+<div class="section" id="coordpositions">
+<h3>CoordPositions<a class="headerlink" href="#coordpositions" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CoordPositions</span></code> can directly describe the position of objects. When specifying a coordinate position, one of three different ‘frames’ can be chosen:</p>
+<ul class="simple">
+<li><p>IMU: the vehicle coordinate system (forward-left-up), in which the origin is the position of the ego vehicle.</p></li>
+<li><p>ENU: East-north-up, in which coordinates are relative tothe map origin. If no coordinate frame (coordFrame) isspecified, then ENU is used by default.</p></li>
+<li><p>WGS84: World geodetic system, whose coordinate originis the Earth’s center of mass. It is the reference coordinatesystem used by the GPS (Global Positioning System).</p></li>
+</ul>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>coordPosition ::= [coordFrame] coordExpr
+coordFrame ::= &#39;IMU&#39; | &#39;ENU&#39; | &#39;WGS84&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">coordExpr</span></code> here is type of <a class="reference internal" href="value_types.html#type-coordinate"><span class="std std-ref">Coordinate</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ego_init_position = (4.5, 214, -2);
+npc1_init_position = IMU(2, 4);
+pedestrian_init_position = WGS84(1.28,103.8);
+// The ego_init_position is set to &#39;ENU&#39; by default.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Line 1 of the example specifies  the  initial  position  of  the  ego  vehicle  as (4.5, 214)  east-north  relative  to  the  map  origin.  Note  that the ENU coordinate  system  is  used  by  default  as  no  framewas  specified.  Line  2,  which  declares the IMU coordinatesystem, specifies the initial position of an NPC vehicle as (2,4) forward-left relative to the ego vehicle. Note that the positioncan  only  be  applied  after  the  ego  vehicle  has  been  formally generated. Line 3 defines  the  initial  position  of  a  pedestrianusing the WGS84 format. Note that this coordinate system can only be applied to a map that provides latitude and longitude information.</p>
+</div>
+</div>
+<div class="section" id="lanepositions">
+<h3>LanePositions<a class="headerlink" href="#lanepositions" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">lanePositions</span></code> are relative, and describe how far an object is from the starting point of its lane (whichis specified using a laneID). If the user are unclear about the map coordinates, the <code class="docutils literal notranslate"><span class="pre">lanePositions</span></code> are convenient.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>lanePosition ::= laneID &#39;-&gt;&#39; realExpr
+laneID ::= stringExpr
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">realExpr</span></code> here is type of <a class="reference internal" href="value_types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>npc3_init_position = &quot;lane_38&quot; -&gt; 0.0;
+//specifies that the initial position of NPC3 is at the start pointof the lane with ID lane38.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="heading">
+<span id="type-heading"></span><span id="index-1"></span><h2>Heading<a class="headerlink" href="#heading" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Heading</span></code> describes the orientation of an object by specifying  its  deviation  relative  to  a  predefined  direction.  In AVUnit, predefined directions can be the orientation of a lanepoint,  ego  vehicle,  NPC  vehicle,  and  or  a  pedestrian.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>heading ::= angleVal unit [&#39;related to&#39; direction]
+direction ::= lanePosition | egoID | npcID | pedestrianID | &#39;EGO&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In  the grammar rule for heading, <code class="docutils literal notranslate"><span class="pre">angleVal</span></code> is the real angle value, unit is either degrees (deg) or radians (rad), and <code class="docutils literal notranslate"><span class="pre">direction</span></code> is  the  predefined  direction  that  the  angle  is  relative  to. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>heading1 = 10 deg related to EGO;
+heading2 = 40 deg related to npc1;
+</pre></div>
+</div>
+</div>
+<div class="section" id="state">
+<span id="type-state"></span><h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">State</span></code>: Every  object  in  a  scene  has  some  internal  state  that contains their position, the current direction they are heading, and their current speed. When mutating the state of an object, the position must always be specified, but the heading and  speed  are  optional,  defaulting  to  zero  if  omitted.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>state ::= &#39;(&#39; position[&#39;,&#39; [heading] [&#39;,&#39;speed] &#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">position</span></code> here is type of <a class="reference internal" href="#type-position"><span class="std std-ref">Position</span></a>.The <code class="docutils literal notranslate"><span class="pre">heading</span></code> here is type of <a class="reference internal" href="#type-heading"><span class="std std-ref">Heading</span></a>. The <code class="docutils literal notranslate"><span class="pre">speed</span></code> here is type of <a class="reference internal" href="value_types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>npc1_init_state = (&quot;lane_1&quot; -&gt; 0.0);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example assigns the position of NPC1 the starting point of lane “lane_1”.  As  the  direction  headed  and  speed  are  omitted, AVUnit will assign default values. In this case, the NPC will be  oriented  at  0  degrees  from  the  direction  of lane_1,  and will have an initial speed of 0</p>
+</div>
+</div>
+<div class="section" id="objecttype">
+<span id="type-objectype"></span><h2>ObjectType<a class="headerlink" href="#objecttype" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ObjectType</span></code>: Objects  on  the  road,  whether  they  are  NPCvehicles or static obstacles, are associated with an object type. AVUnit defines three different object types as follows:</p>
+<ul class="simple">
+<li><p>Vehicle  types  (vehicleType),  which  are  utilised  to  distinguish different  vehicles.  Vehicle  objects  can  take  a  specifictype  (e.g.  a  detailed  vehicle  model),  or  a  more  generictype  (e.g.  car,  bus,  van,  bicycle),  which  can  be  further customised according to colour and material.</p></li>
+<li><p>Pedestrian types (pedType), which describe the different kinds of human beings in the scene. Similar to vehicles, pedestrians  can  take  the  type  of  a  predefined  pedestrian model,  or  a  more  general  form  described  by  height  andcolour.</p></li>
+<li><p>Static types (staticType), which describe the shape and size  of  static  objects  (e.g.  boxes,  cones,  cylinders)  that serve as obstacles in the scene.</p></li>
+</ul>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>vehicleType ::= &#39;(&#39; type [,&lt;color&gt;] &#39;)&#39;
+type ::= specificType | genType
+pedType ::= specificType | pedGenType
+genType ::= car|bus|van|truck|bicycle|motorcycle|tricycle
+pedGenType ::= &#39;(&#39; height &#39;,&#39; color &#39;)&#39;
+staticType ::= sphere | box | cone | cylinder
+sphere ::= &#39;(&#39; sphere &#39;,&#39; naturalVal &#39;)&#39;
+box ::= &#39;(&#39; box &#39;,&#39; size &#39;)&#39;
+cone ::= &#39;(&#39; cone &#39;,&#39; size &#39;)&#39;
+cylinder ::= &#39;(&#39; cylinder &#39;,&#39; size &#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">specificType</span></code> here is type of <a class="reference internal" href="value_types.html#type-string"><span class="std std-ref">String</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>car_model = car;
+car_color = green;
+vehicle0_type = (car_model, car_color);
+ped0_type = &quot;Howard&quot;;
+ped1_type = ( 1.8 , blue);
+ob0_type = (sphere, 2)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example’s first three lines describe the type of vehicle0. Vehicle0 is a green car. The fourth line illustrates that the ped0 is “Howard” (a predefined model of pedestrian). The fifth line defines a pedestrian whose height is 1.8m and in blue clothes. The last line describes a sphere whose diameter is 2 meters.</p>
+</div>
+</div>
+<div class="section" id="weather">
+<span id="type-weather"></span><h2>Weather<a class="headerlink" href="#weather" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Weather</span></code>: AVUnit can  be  used  to  specify  combinations  of weather in  the  environment,  including  different  amounts  of sun,  rain,  fog,  wetness,  and  snow.  Weather  can  be  quantified using a real value between[0,1] or a set of labels (e.g. light,middle, heavy) which are mapped to predefined values. Note that different kinds of weather can exist at the same time.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>weather ::= &#39;{&#39; weatherStatements &#39;}&#39;
+weatherStatements ::= weatherStatement | weatherStatements , weatherStatement
+weatherStatement :: =kind &#39;:&#39; (continuousIndex | discreteLevel )
+kind ::= sunny | rain | snow | fog | wetness | cloudiness
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">continuousIndex</span></code> can be numbers ranging from 0 to 1. The <code class="docutils literal notranslate"><span class="pre">discreteLevel</span></code> is a set of labels(e.g. light,middle, heavy).  For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>weather = {rain: 0.5, wetness: 0.7, fog: heavy};
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example results in rain of medium intensity, as well as high levels of wetness and fog.</p>
+</div>
+</div>
+<div class="section" id="time">
+<span id="type-time"></span><h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: Time is an intrinsic component  of  the  environment.  It  is  specified  straight forwardly using hours (0-23) and minutes (0–59).</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>timeExpr ::= time | timeExpr vectorOperator time
+time ::= hour &#39;:&#39; minute
+hour ::= digit |1 digit | 2 digit3
+digit3 ::= 0|…|3
+minute ::= digit5 digit
+digit5 ::= 0|…|5
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that expressions(computation of time) over time are supported by AVUnit. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>time = 12:00;
+ //This is for midday.
+</pre></div>
+</div>
+</div>
+<div class="section" id="motion">
+<span id="type-motion"></span><h2>Motion<a class="headerlink" href="#motion" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Motion</span></code>: Motion can be either uniform (<code class="docutils literal notranslate"><span class="pre">uniformMotion</span></code>) or based on  waypoints  (<code class="docutils literal notranslate"><span class="pre">waypointMotion</span></code>).  In  uniform  motion,  theNPC vehicle or pedestrian moves with a fixed speed as defined in  the state.  In  waypoint-based  motion,  the  object  moves towards the target position via a sequence of points as specified by the user. This type is useful when the want to speicfy the trace of a pedestrian or background vehicle.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>motion ::= uniformMotion | waypointMotion
+uniformMotion ::= &#39;Uniform(&#39; state &#39;)&#39;
+waypointMotion ::= (&#39;Waypoint&#39; | &#39;WP&#39; | &#39;W&#39; ) &#39;(&#39; stateList &#39;)&#39;
+stateList ::= state | stateList &#39;,&#39; state
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">state</span></code> here is type of <a class="reference internal" href="#type-state"><span class="std std-ref">State</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>motion1 = Uniform(npc_init_state);
+npc_state = ((&quot;lane_2&quot; -&gt; 0.0, , 1.0), (&quot;lane_2&quot; -&gt;50.0, ,1.0), (&quot;lane_2&quot; -&gt; 100.0, , 1.0), (&quot;lane_3&quot; -&gt; 0.0, , 1.0), (&quot;lane_3&quot; -&gt; 10.0, ,1.0), (&quot;lane_4&quot; -&gt; 0.0, , 1.0),( &quot;lane_4&quot; -&gt;50.0, , 1.0) ), (&quot;lane_4&quot; -&gt; 100, , 0.0));
+motion2 = Waypoint(npc_state);
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SUN Yang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

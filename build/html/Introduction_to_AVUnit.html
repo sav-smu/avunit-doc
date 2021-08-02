@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Introduction to AVUnit &mdash; AVUnit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Install AVUnit" href="Install_AVUnit.html" />
+    <link rel="prev" title="Welcome to AVUnit’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AVUnit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to AVUnit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-avunit">What is AVUnit?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-need-avunit">Why we need AVUnit?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-can-you-do-with-avunit">What can you do with AVUnit?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Install_AVUnit.html">Install AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AVUnit_examples.html">AVUnit examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Language Description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generate_scenarios_by_AVUnit.html">Generate Scenarios by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semantics_of_Describing_Scenes.html">Semantics of Describing Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build_specifications_by_AVUnit.html">Define Specifications by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Semanticss_of_Defining_Specifications.html">Semantics of Describing Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overall_BNF.html">Overall BNF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extension to simulations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simulations.html">AVUnit connected to Simulator and Autonomous Vehicle</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AVUnit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Introduction to AVUnit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/Introduction_to_AVUnit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-to-avunit">
+<h1>Introduction to AVUnit<a class="headerlink" href="#introduction-to-avunit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-avunit">
+<h2>What is AVUnit?<a class="headerlink" href="#what-is-avunit" title="Permalink to this headline">¶</a></h2>
+<p>In this documentation, we are going to propose AVUnit, a specially designed language  for  systematically  testing  AV  systems against  rich  correctness  specifications.  Designed  modularly  to support  different  simulators,  AVUnit consists  of  two  new  languages for specifying dynamic properties of scenes (e.g. changing pedestrian behaviour after waypoints) and fine-grained assertions about  the  AV’s  journey  (e.g.  traffic rules of different countries). With the help of AVUnit, we can not only describe different scenes easily but also define assertions as we wish.The grammar of the AVUnit are going to be introduced in details in this documentation.</p>
+</div>
+<div class="section" id="why-we-need-avunit">
+<h2>Why we need AVUnit?<a class="headerlink" href="#why-we-need-avunit" title="Permalink to this headline">¶</a></h2>
+<p>There is no doubt that autonomous vehicles are of great potential. Autonomous  vehicles  (AVs)  are  set  to  play  an  essential role  in  relieving  traffic  congestion  and  eliminating  accidentsin  intelligent  transportation  systems.  To  provide  a  high  level of  automation,  AVs  are  controlled  by  autonomous  driving systems  (ADSs),  which  take  over  various  driving  tasks  from human  drivers  by  interpreting  and  acting  on  sensory  information  (e.g.  lidar  data).  Before  AVs  can  be  fully  deployed on public roads, however, it is imperative that their ADSs are comprehensively tested to ensure they will always behave correctly and safely, even in rare or unlikely scenarios: pedestrians and human-controlled vehicles can behave unpredictably, and lives depend on how the AV reacts.</p>
+<p>The  state  of  the  art  in  AV  testing  can  be  broadly  dividedinto  two  categories: real-world  testing and simulator-based testing. Extensive and rigorous real-world road testing for AVs is  necessary,  and  often  used  as  a  measure  of  the  technology’s progress, e.g. the number of kilometres covered without human  intervention.  However,  it  is  also  costly,  risky,  and most  importantly,  insufficiently  covers  all  the  situations  thatAVs must be able to safely react to (e.g. accident scenarios).This  motivates  the  need  for  simulator-based  testing,  wheredevelopers  and  safety  engineers  can  systematically  assess ADSs against a broader range of scenarios that may occur on the road.</p>
+<p>For   simulation-based   testing,   researchers   and   engineersrely   on   high-fidelity   simulators   such   as   <a class="reference external" href="https://www.svlsimulator.com/docs/">LGSVL</a>   and   <a class="reference external" href="https://carla.readthedocs.io/en/latest/">CARLA</a>, which can simulate not only sensors and vehicle dynamics   but   also   controlled   traffic   scenarios.   While equipped  with  APIs  for  configuring  scenarios,  these  differ significantly   between   simulators,   and   are   not   specifically designed  to  support  systematic  testing  and  analysis. With the help of AVUnit, we can not only configure scenarios across different simulators efficiently but also evaluate the correctness of traces due to the specification the user defined.</p>
+</div>
+<div class="section" id="what-can-you-do-with-avunit">
+<h2>What can you do with AVUnit?<a class="headerlink" href="#what-can-you-do-with-avunit" title="Permalink to this headline">¶</a></h2>
+<p>Basic functions of AVUnit:</p>
+<ul class="simple">
+<li><p>Describe Different Scenes</p></li>
+<li><p>Define Different specifications</p></li>
+</ul>
+<p>Here are a few possible extensions of AVUnit:</p>
+<ul class="simple">
+<li><p>Build Fuzzing algorithm to generate “critical” scenes</p></li>
+<li><p>Connect to different simulators and autonomous  driving systems (ADSs) for evaluation of different ADSs</p></li>
+<li><p>Find “bugs” of ADSs</p></li>
+<li><p>Participate in the development process of ADSs</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Install_AVUnit.html" class="btn btn-neutral float-right" title="Install AVUnit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to AVUnit’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SUN Yang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

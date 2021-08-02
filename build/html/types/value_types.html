@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Basic Types &mdash; AVUnit  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AVUnit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction_to_AVUnit.html">Introduction to AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install_AVUnit.html">Install AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AVUnit_examples.html">AVUnit examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Language Description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Generate_scenarios_by_AVUnit.html">Generate Scenarios by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Semantics_of_Describing_Scenes.html">Semantics of Describing Scenes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Build_specifications_by_AVUnit.html">Define Specifications by AVUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Semanticss_of_Defining_Specifications.html">Semantics of Describing Specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Overall_BNF.html">Overall BNF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extension to simulations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simulations.html">AVUnit connected to Simulator and Autonomous Vehicle</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AVUnit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Basic Types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/types/value_types.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-types">
+<span id="id1"></span><h1>Basic Types<a class="headerlink" href="#basic-types" title="Permalink to this headline">¶</a></h1>
+<p>The following types are basic types of AVUnit, the other specific types is composed of them.
+What’s more, variables of these types will always be passed by value, i.e. they are always copied when they
+are used as function arguments or in assignments.</p>
+<div class="section" id="strings">
+<span id="type-string"></span><span id="index-0"></span><h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: The possible values are cpmposed by string values.</p>
+<p>Operators:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> (string merge)</p></li>
+</ul>
+<p>The operators <code class="docutils literal notranslate"><span class="pre">+</span></code> is used for string merging, it’s useful when we want to name multiple agents.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>stringExpr ::= string | stringExpr &#39;+&#39; stringExpr
+string ::= inputCharacter | string inputCharacter
+inputCharacter ::= letter | digit | symbol
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>string0 = &quot;lane&quot;;
+string1 = &quot;_19&quot;;
+string3 = string0 + string1;
+// The value of string3 is &quot;lane_19&quot;.
+</pre></div>
+</div>
+</div>
+<div class="section" id="real-values">
+<span id="type-realvalue"></span><span id="index-1"></span><h2>Real Values<a class="headerlink" href="#real-values" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Real</span> <span class="pre">Value</span></code>: The possible values are numbers.</p>
+<p>Operators:</p>
+<ul class="simple">
+<li><p>Arithmetic operator 1: <code class="docutils literal notranslate"><span class="pre">^</span></code> (exponentiation), this operator has highest priority</p></li>
+<li><p>Arithmetic operator 2: <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> the multiplication and division shares the second priority</p></li>
+<li><p>Arithmetic operator 3: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, unary <code class="docutils literal notranslate"><span class="pre">-</span></code> (only for signed integers), the addition and minus has the least priority.</p></li>
+</ul>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>realValue ::= [signal] number [&#39;.&#39;number]
+realExpr ::= &lt;term1&gt; | realExpr operator1 term1
+term1 ::= term2 | term1 operator2 term2
+term2 ::= term3 | term2 operator3 term3
+term3 ::= realValue | &#39;(&#39; realExpr &#39;)&#39;
+operator1 ::= + | -
+operator2 ::= * | / |
+operator3 ::= ^
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The range of <code class="docutils literal notranslate"><span class="pre">Real</span> <span class="pre">Value</span></code> is from <code class="docutils literal notranslate"><span class="pre">-infinite</span></code> to <code class="docutils literal notranslate"><span class="pre">+infinite</span></code>. <code class="docutils literal notranslate"><span class="pre">Real</span> <span class="pre">Value</span></code> can be both Integer and Float. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>a = -2;
+b = 2^3;
+c = (a + b)*7/3;
+// The value of c is 14.
+</pre></div>
+</div>
+</div>
+<div class="section" id="coordinates">
+<span id="type-coordinate"></span><h2>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Coordinate</span></code>: The possible values are vectors.</p>
+<p>Operators:</p>
+<ul class="simple">
+<li><p>Arithmetic operator: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, the addition and minus of coordinates.</p></li>
+</ul>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>coordinate ::= &#39;(&#39; realExpr, realExpr [, realExpr] &#39;)&#39;
+coordinateExpr ::= coordinate | coordinateExpr operator1 coordinate
+&lt;operator1&gt; ::= + | -
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Coordinate</span></code> can be composed of two elements or three elements. The <code class="docutils literal notranslate"><span class="pre">realExpr</span></code> here is type of <a class="reference internal" href="#type-realvalue"><span class="std std-ref">Real Value</span></a>.The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>coord1 = (1,2);
+coord2 = (2,3) + coord1;
+coord3 = (1,2,3);
+coord4 = (2,3,-1) + coord3;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, SUN Yang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
