@@ -26,7 +26,7 @@ There is a plan to translate this documentation into several languages.
 They have varying degrees of completeness and up-to-dateness(all not available at now stage). The English
 version stands as a reference.
 
-* `Simplified Chinese <https://learnblockchain.cn/docs/solidity/>`_ (not available)
+* `Simplified Chinese <https://www.google.com/>`_ (not available)
 
 Table of Contents
 ================================
