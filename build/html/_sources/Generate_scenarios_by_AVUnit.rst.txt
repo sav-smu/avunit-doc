@@ -4,7 +4,7 @@ Generate Scenarios by AVUnit
 
 A key distinction of AVUnit in comparison to other languages for scenes is that it  provides  a user-friendly and domain-specific way to specifys cenarios, in which objects are executing  independent journey plans in an environment that is dynamically changing. Without specifying scenarios, many real-world behaviours of AVs may not be properly tested. Asking users to fully specify scenarios, however, would be overwhelming, so AVUnit strikes  a  balance by  allowing  them  to  specify  some  key  parts  (e.g. journey waypoints) while leaving the rest to automatic test generation. In  particular, AVUnit supports  an  agent-oriented  style of programming, in which the motions of individual objects arespecified in a fully decoupled way. We will present the key features of the language that support this design in this section.
 
-
+.. _scenario_description:
 
 ***********************
 Describe a Scenario
@@ -217,13 +217,121 @@ Related Examples:
 					env;
 	}
 
+
+**************************
+Probabilistic Programming
+**************************
+
+In the previous :ref:`section<scenario_description>`, we introduce the deterministic description of different scenes. But for users who are new to AVUnit, it's difficult to make deterministic description. What's more, the deterministic description is also harder for extensions (e.g. Fuzzing Algorithm). In our desgin, AVUnit is also a probabilistic programming language(like `Scenic <https://arxiv.org/abs/1809.09310>`_). As a probabilistic programming language, AVUnit allows assigning distributions to features of the scenes. 
+
+The :ref:`State<type_state>` of AVUnit descripbes the snapshot of ego vehicles, NPC Vehicles and Pedestrians. The :ref:`State<type_state>` consists of three basic elements: position, heading and speed. In AVUnit, we can use a probabilistic way to define these three basic elements.
+We are going to explore it in the following part.
+
+Probabilistic Position
+======================================
+
+As defined in :ref:`here<type_position>`, the position type of AVUnit contains coordinate position and lane position. The probabilistic programming of these two position types is slightly different. We are going to introduce it in this section.
+
+Coordinate Position
+-----------------------
+
+The probabilistic programming of Coordinate Position allows users to define an "area". The final position will be a point in this area. 
+
+First part of the probabilistic Coordinate Position is just a :ref:`CoordPosition<type_CoordPosition>`. We can treat it as a basic position. The "area" will be defined based on it.
+There are two vectors (connected with symbol ``&``) comes with keyword ``range``. The first vector in the expression means the range of x-axis deviates from the basic position. Similarly, the second vetor represents the range of y-axis deviates from the basic position.
+
+BNF Defination:
+::
+
+	 coordPositionRange ::= [coordFrame] coordExpr 'range' '(' realvalueExpr ',' realvalueExpr  ')' '&' '(' realvalueExpr ',' realvalueExpr ')'
+	 coordFrame ::= 'IMU' | 'ENU' | 'WGS84'
+
+.. note:: 
+
+  For the ``range`` vector, the left element must be smaller than the right element. The ``coordExpr`` here is type of :ref:`Coordinate<type_coordinate>`. The ``realvalueExpr`` here is type of :ref:`Real Value<type_realvalue>`. The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
+
+Related Examples:
+::
+
+	ego_init_position = (553090.1, 4182687.8) range (-10,10) & (10,100); 
+
+.. note:: 
+
+	The example's basic position is ``(553090.1, 4182687.8)``. The x-axis of the final position will be within the range of ``(553090.1 - 10, 553090.1 + 10)``. The y-axis of the final position will be within the range of ``(4182687.8 + 10, 4182687.8 + 100)``.
+
+Lane Position
+--------------
+The probabilistic programming of Lane Position allows users to define a range of deviation from the start point of the lane. The final position will be a point along the lane. 
+
+Similar to the deterministic :ref:`Lane Position<type_LanePosition>`, probabilistic Lane Position is also a relative position. The probabilistic Lane Position describe how far (within a user-defined range) an object is from the starting point of its lane (whichis specified using a laneID).
+
+BNF Defination:
+::
+
+	 LanePositionRange ::=  laneID '->' 'range' '(' realvalueExpr ',' realvalueExpr  ')'
+
+.. note:: 
+
+  For the ``range`` vector, the left element must be smaller than the right element. The ``realvalueExpr`` here is type of :ref:`Real Value<type_realvalue>`. The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
+
+Related Examples:
+::
+
+	ego_target_position = "lane_45"-> range(2,102); 
+
+.. note:: 
+
+	The example's basic position is the start point of lane "lane_45". The final position will be a point along the lane "lane_45", and it will be between point ``"lane_45"-> 2`` and point ``"lane_45"-> 102``.
+
+
+Probabilistic Heading
+======================================
+
+As defined in :ref:`here<type_heading>`, the Heading type of AVUnit is a realtive type. The probabilistic Heading is also a realtive type (relative to a predefined direction), but it's final value will come from a range.
+
+BNF Defination:
+::
+
+	HeadingRange ::= 'range' '(' angleVal ',' angleVal ')' unit ['related to' direction]
+	direction ::= lanePosition | egoID | npcID | pedestrianID | 'EGO'
+
+.. note:: 
+
+  For the ``range`` vector, the left element must be smaller than the right element. The ``angleVal`` here is type of :ref:`Real Value<type_realvalue>` or pi value. The ``unit`` is either degrees (deg) or radians (rad). The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
+
+Related Examples:
+::
+
+	heading1 = range (1 pi, 10 pi) deg related to EGO; 
+	heading2 = range (1, 10 ) deg related to "lane_39"-> 20;
+	heading3 = range (1, 10 ) rad;
+
+
+Probabilistic Speed
+======================================
+
+The deterministic Speed is type of :ref:`Real Value<type_realvalue>` in AVUnit. The probabilistic Speed is a range of speed, the manifestation is a vector.
+
+BNF Defination:
+::
+
+	 SpeedRange ::= 'range' '(' realvalueExpr ',' realvalueExpr ')' 
+
+.. note:: 
+
+  For the ``range`` vector, the left element must be smaller than the right element. The ``realvalueExpr`` here is type of :ref:`Real Value<type_realvalue>`. The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
+
+Related Examples:
+::
+
+	spd_range1 = range (1, 10);
+
+
 .. _scenario_a_complete_example:
 
 ***********************
 A Complete Example
 ***********************
-
-
 
 The Below picture shows  an  initial  scene  of  a  concrete  scenario,  i.e.,the input of a test case, that we want to test for the `Apollo <https://github.com/ApolloAuto/apollo>`_  ADS on the San_Francisco map. To describe the scenario, we need to describe the motion task of the ego vehicle, the motion of ``npc1``-``npc8`` and the pedestrian ``ped``. Let first describe the details of the scenario and give give its description in AVUnit.
 

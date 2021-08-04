@@ -75,32 +75,32 @@ Scenario Part
 		//second <state> is the target state of the ego vehicle
 		//without <vehicle type>, use the default one.
 	<state> ::= “(”<position>[,[<heading>][,<speed>]]”)”
-	// the format can be: (position), (position, heading), (position, heading, speed), (position, ,speed)
+		// the format can be: (position), (position, heading), (position, heading, speed), (position, ,speed)
 	<position> ::= <coordinate position>|<lane position>
-	<coordinate position> ::= [<coordinate frame>]<coordinate expression>
+	<coordinate position> ::= [<coordinate frame>]<coordinate expression> | [<coordinate frame>]<coordinate expression> “range” “(” real value expression “,” real value expression “)” “&”  “(”  real value expression “,” real value expression “)”
 	<coordinate frame> ::= IMU | ENU | WGS84
 		// IMU: vehicle coordinate system, right-forward-up, origin is the position of the vehicle
-	// ENU: east-north-up, map origin is the origin of the coordinate
-	// WGS84: world geodetic system
-	// default coordinate frame: ENU
+		// ENU: east-north-up, map origin is the origin of the coordinate
+		// WGS84: world geodetic system
+		// default coordinate frame: ENU
 
-	<lane position> ::= <lane ID> “-““>” <real value expression>
-	// <lane ID> -> <real value>: the distance of the point to the start point of <lane ID> is <real value>
+	<lane position> ::= <lane ID> “-““>” <real value expression> | <lane ID> “->” “range” “(“real value expression “,” real value expression “)”
+		// <lane ID> -> <real value>: the distance of the point to the start point of <lane ID> is <real value>
 	<lane ID> ::= <string>|[[<signal>]<number>”.”] [<signal>]<number>
 
-	<heading> ::= <angle value> <unit> [related to <direction>]
-	// default value: the direction to the lane where the position is on
+	<heading> ::= <angle value> <unit> [related to <direction>] | “range” “(“ <angle value> “,” <angle value> “)”<unit>  [related to <direction>]
+		// default value: the direction to the lane where the position is on
 	<angle value> ::= <real value expression>|<pi value>
 	<pi value> ::= [<real value expression>]pi
 	<unit> ::= deg | rad
 	<direction> ::= <lane position>| <ego identifier>|<npc identifier>|<pedestrian identifier> |EGO
 
-	<speed> ::= <real value expression>
+	<speed> ::= <real value expression> | “range” “(“<real value expression>, <real value expression> “)”
 
 	<vehicle type> ::= “(”<type>[,<color>]”)”
 	<type> ::= <specific type>|<general type>
 	<specific type> ::= “””<string expression>”””
-	//model of the vehicle
+		//model of the vehicle
 	<general type> ::= car|bus|Van|truck|bicycle|motorbicycle|tricycle
 	<color> ::= <color list>|<rgb color>
 	<color list> ::= red|green|blue|black|white
@@ -113,9 +113,9 @@ Scenario Part
 	<multiple npc vehicles> = <npc vehicle>|<multiple npc vehicles>,<npc vehicle>
 	<npc vehicle> ::= Vehicle”(”[<parameter_list_npc>]”)”
 	<parameter_list_npc> ::= <state> [,[<vehicle motion>] [,[<state>] [,<vehicle type>]]]
-	//first <state> is the initial state of a vehicle
-	//second <state> is the target state of a vehicle
-	//default motion: uniform form motion along paths
+		//first <state> is the initial state of a vehicle
+		//second <state> is the target state of a vehicle
+		//default motion: uniform form motion along paths
 	<vehicle motion> ::= <uniform motion>|<waypoint motion>
 	<uniform motion> ::= <uniform index>”(”< state>”)”
 		// move with the given speed in <state>
@@ -132,7 +132,7 @@ Scenario Part
 	<random motion> ::= Random(<state>)
 	<pedestrian type> ::= <specific type>|<pedestrian general type>
 	<pedestrian general type> ::= “(”<height>,<color>”)”
-	//color means the color of cloth
+		//color means the color of cloth
 	<height> ::= <real value expression>
 
 	<obstacles> ::= “{“[<multiple obstacles>]”}”
@@ -158,7 +158,7 @@ Scenario Part
 	<weather statements> ::= <weather statement>|<weather statements>,<weather statement>
 	<weather statement> ::= “‘”<kind>:“’” <weather continuous index>|<weather discrete level>;
 	<kind> ::= sunny|rain|snow|fog|wetness|cloudiness
-	//this should be set based on simulator capability
+		//this should be set based on simulator capability
 	<weather continuous index> ::= <proper fraction>|1
 	<proper fraction> ::= 0.<number>
 	<weather discrete level> ::= light|middle|heavy

@@ -2,7 +2,7 @@
 Define Specifications by AVUnit
 ###############################
 
-This section summarises the syntax of AVUnit (Specification Part), our langauge for specifying AV correctness properties. In contrast to existing AV testing approaches, which tend to focus on weak oracles (e.g.~no collisions, reach destination eventually), AVUnit allows for the specification of richer correctness conditions about how the ego vehicle behaves across the multitude of scenarios it encounters during its journey.
+This section summarises the syntax of AVUnit (Specification Part), our langauge for specifying AV correctness properties. In contrast to existing AV testing approaches, which tend to focus on weak oracles (e.g. no collisions, reach destination eventually), AVUnit allows for the specification of richer correctness conditions about how the ego vehicle behaves across the multitude of scenarios it encounters during its journey.
 
 *****************************
 Trajectories

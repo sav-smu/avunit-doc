@@ -15,6 +15,8 @@ Position
 ``Position``: This type can describe position of objects. In AVUnit, the positions of different objects (including the car under test, NPCs, and pedestrians) in scenes are specified using one of two kinds of positional references:
 (1) coordinates, i.e. a 2D or 3D vector expression; or (2) lanepositions, a position relative to a lane’s  starting point.
 
+.. _type_CoordPosition:
+
 CoordPositions
 ^^^^^^^^^^^^^^^^
 ``CoordPositions`` can directly describe the position of objects. When specifying a coordinate position, one of three different 'frames' can be chosen:
@@ -44,6 +46,7 @@ Related Examples:
 
   Line 1 of the example specifies  the  initial  position  of  the  ego  vehicle  as (4.5, 214)  east-north  relative  to  the  map  origin.  Note  that the ENU coordinate  system  is  used  by  default  as  no  framewas  specified.  Line  2,  which  declares the IMU coordinatesystem, specifies the initial position of an NPC vehicle as (2,4) forward-left relative to the ego vehicle. Note that the positioncan  only  be  applied  after  the  ego  vehicle  has  been  formally generated. Line 3 defines  the  initial  position  of  a  pedestrianusing the WGS84 format. Note that this coordinate system can only be applied to a map that provides latitude and longitude information.
 
+.. _type_LanePosition:
 
 LanePositions
 ^^^^^^^^^^^^^^^^
@@ -81,13 +84,13 @@ BNF Defination:
 
 .. note::
 
-  In  the grammar rule for heading, ``angleVal`` is the real angle value, unit is either degrees (deg) or radians (rad), and ``direction`` is  the  predefined  direction  that  the  angle  is  relative  to. The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
+  In  the grammar rule for heading, ``angleVal`` is :ref:`Real Value<type_realvalue>` or pi value, ``unit`` is either degrees (deg) or radians (rad), and ``direction`` is  the  predefined  direction  that  the  angle  is  relative  to. The BNF defination here is a simplified one. For the complete version, please refer to :doc:`here<Overall_BNF>`.
 
 Related Examples:
 ::
 
   heading1 = 10 deg related to EGO;
-  heading2 = 40 deg related to npc1;
+  heading2 = 4 pi deg related to npc1;
 
 
 .. _type_state:

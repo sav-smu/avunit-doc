@@ -172,13 +172,13 @@
             
   <div class="section" id="special-types">
 <span id="id1"></span><h1>Special Types<a class="headerlink" href="#special-types" title="Permalink to this headline">¶</a></h1>
-<p>The following types are specially designed for AVUnit, they are based on the types of <a class="reference internal" href="value_types.html#basic-types"><span class="std std-ref">basic types</span></a>. These types can be utilized to describe the scenarios by details.</p>
+<p>The following types are specially designed for AVUnit, they are based on the types of <a class="reference internal" href="../types.html#basic-types"><span class="std std-ref">basic types</span></a>. These types can be utilized to describe the scenarios by details.</p>
 <div class="section" id="position">
 <span id="type-position"></span><span id="index-0"></span><h2>Position<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Position</span></code>: This type can describe position of objects. In AVUnit, the positions of different objects (including the car under test, NPCs, and pedestrians) in scenes are specified using one of two kinds of positional references:
 (1) coordinates, i.e. a 2D or 3D vector expression; or (2) lanepositions, a position relative to a lane’s  starting point.</p>
 <div class="section" id="coordpositions">
-<h3>CoordPositions<a class="headerlink" href="#coordpositions" title="Permalink to this headline">¶</a></h3>
+<span id="type-coordposition"></span><h3>CoordPositions<a class="headerlink" href="#coordpositions" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">CoordPositions</span></code> can directly describe the position of objects. When specifying a coordinate position, one of three different ‘frames’ can be chosen:</p>
 <ul class="simple">
 <li><p>IMU: the vehicle coordinate system (forward-left-up), in which the origin is the position of the ego vehicle.</p></li>
@@ -192,7 +192,7 @@ coordFrame ::= &#39;IMU&#39; | &#39;ENU&#39; | &#39;WGS84&#39;
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">coordExpr</span></code> here is type of <a class="reference internal" href="value_types.html#type-coordinate"><span class="std std-ref">Coordinate</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">coordExpr</span></code> here is type of <a class="reference internal" href="../types.html#type-coordinate"><span class="std std-ref">Coordinate</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ego_init_position = (4.5, 214, -2);
@@ -207,7 +207,7 @@ pedestrian_init_position = WGS84(1.28,103.8);
 </div>
 </div>
 <div class="section" id="lanepositions">
-<h3>LanePositions<a class="headerlink" href="#lanepositions" title="Permalink to this headline">¶</a></h3>
+<span id="type-laneposition"></span><h3>LanePositions<a class="headerlink" href="#lanepositions" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">lanePositions</span></code> are relative, and describe how far an object is from the starting point of its lane (whichis specified using a laneID). If the user are unclear about the map coordinates, the <code class="docutils literal notranslate"><span class="pre">lanePositions</span></code> are convenient.</p>
 <p>BNF Defination:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>lanePosition ::= laneID &#39;-&gt;&#39; realExpr
@@ -216,7 +216,7 @@ laneID ::= stringExpr
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">realExpr</span></code> here is type of <a class="reference internal" href="value_types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">realExpr</span></code> here is type of <a class="reference internal" href="../types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>npc3_init_position = &quot;lane_38&quot; -&gt; 0.0;
@@ -235,11 +235,11 @@ direction ::= lanePosition | egoID | npcID | pedestrianID | &#39;EGO&#39;
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In  the grammar rule for heading, <code class="docutils literal notranslate"><span class="pre">angleVal</span></code> is the real angle value, unit is either degrees (deg) or radians (rad), and <code class="docutils literal notranslate"><span class="pre">direction</span></code> is  the  predefined  direction  that  the  angle  is  relative  to. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+<p>In  the grammar rule for heading, <code class="docutils literal notranslate"><span class="pre">angleVal</span></code> is <a class="reference internal" href="../types.html#type-realvalue"><span class="std std-ref">Real Value</span></a> or pi value, <code class="docutils literal notranslate"><span class="pre">unit</span></code> is either degrees (deg) or radians (rad), and <code class="docutils literal notranslate"><span class="pre">direction</span></code> is  the  predefined  direction  that  the  angle  is  relative  to. The BNF defination here is a simplified one. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>heading1 = 10 deg related to EGO;
-heading2 = 40 deg related to npc1;
+heading2 = 4 pi deg related to npc1;
 </pre></div>
 </div>
 </div>
@@ -252,7 +252,7 @@ heading2 = 40 deg related to npc1;
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">position</span></code> here is type of <a class="reference internal" href="#type-position"><span class="std std-ref">Position</span></a>.The <code class="docutils literal notranslate"><span class="pre">heading</span></code> here is type of <a class="reference internal" href="#type-heading"><span class="std std-ref">Heading</span></a>. The <code class="docutils literal notranslate"><span class="pre">speed</span></code> here is type of <a class="reference internal" href="value_types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">position</span></code> here is type of <a class="reference internal" href="#type-position"><span class="std std-ref">Position</span></a>.The <code class="docutils literal notranslate"><span class="pre">heading</span></code> here is type of <a class="reference internal" href="#type-heading"><span class="std std-ref">Heading</span></a>. The <code class="docutils literal notranslate"><span class="pre">speed</span></code> here is type of <a class="reference internal" href="../types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>npc1_init_state = (&quot;lane_1&quot; -&gt; 0.0);
@@ -286,7 +286,7 @@ cylinder ::= &#39;(&#39; cylinder &#39;,&#39; size &#39;)&#39;
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">specificType</span></code> here is type of <a class="reference internal" href="value_types.html#type-string"><span class="std std-ref">String</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">specificType</span></code> here is type of <a class="reference internal" href="../types.html#type-string"><span class="std std-ref">String</span></a>. For the complete version, please refer to <span class="xref std std-doc">here</span>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>car_model = car;

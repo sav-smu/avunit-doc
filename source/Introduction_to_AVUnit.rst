@@ -7,7 +7,9 @@ Introduction to AVUnit
 What is AVUnit?
 ***********************
 
-AVUnit (think jUnit for Java) is a high-level descriptive language designed for systematically testing autonomous vehicles (AV). AVUnit is agnostic to existing AV  simulators. It consists  of a language for descripting scenes and scenarios (e.g. changing pedestrian behaviour after waypoints) and a rich assertion language for specifying correctness of AV's behaviors. AVUnit further supports multiple algorithms for automatically generating test cases accordingly to the descriped scenarios and assertions. In this document, we present details of different components of AVUnit systematically. 
+https://junit.org/junit4/
+
+AVUnit (think `jUnit <https://junit.org/junit4/>`_ for Java) is a high-level descriptive language designed for systematically testing autonomous vehicles (AV). AVUnit is agnostic to existing AV  simulators. It consists  of a language for descripting scenes and scenarios (e.g. changing pedestrian behaviour after waypoints) and a rich assertion language for specifying correctness of AV's behaviors. AVUnit further supports multiple algorithms for automatically generating test cases accordingly to the descriped scenarios and assertions. In this document, we present details of different components of AVUnit systematically. 
 
 ***********************
 Why we need AVUnit?

@@ -107,6 +107,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#scenario-definition">Scenario  Definition</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#probabilistic-programming">Probabilistic Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#probabilistic-position">Probabilistic Position</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-position">Coordinate Position</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lane-position">Lane Position</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#probabilistic-heading">Probabilistic Heading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#probabilistic-speed">Probabilistic Speed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#a-complete-example">A Complete Example</a></li>
 </ul>
 </li>
@@ -189,7 +199,7 @@
 <h1>Generate Scenarios by AVUnit<a class="headerlink" href="#generate-scenarios-by-avunit" title="Permalink to this headline">¶</a></h1>
 <p>A key distinction of AVUnit in comparison to other languages for scenes is that it  provides  a user-friendly and domain-specific way to specifys cenarios, in which objects are executing  independent journey plans in an environment that is dynamically changing. Without specifying scenarios, many real-world behaviours of AVs may not be properly tested. Asking users to fully specify scenarios, however, would be overwhelming, so AVUnit strikes  a  balance by  allowing  them  to  specify  some  key  parts  (e.g. journey waypoints) while leaving the rest to automatic test generation. In  particular, AVUnit supports  an  agent-oriented  style of programming, in which the motions of individual objects arespecified in a fully decoupled way. We will present the key features of the language that support this design in this section.</p>
 <div class="section" id="describe-a-scenario">
-<h2>Describe a Scenario<a class="headerlink" href="#describe-a-scenario" title="Permalink to this headline">¶</a></h2>
+<span id="scenario-description"></span><h2>Describe a Scenario<a class="headerlink" href="#describe-a-scenario" title="Permalink to this headline">¶</a></h2>
 <p>In our desgin, a scenario is composed of six elements: <code class="docutils literal notranslate"><span class="pre">map</span></code>，<code class="docutils literal notranslate"><span class="pre">ego</span> <span class="pre">vehicl</span></code> ，<code class="docutils literal notranslate"><span class="pre">npc</span> <span class="pre">vehicles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">pedestrians</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">obstacles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">environment</span></code> [Optional]. We are going to explore it in this part.</p>
 <div class="section" id="map">
 <span id="type-map"></span><h3>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
@@ -200,7 +210,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> here is type of <a class="reference internal" href="types/value_types.html#type-string"><span class="std std-ref">String</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">map</span></code> here is type of <a class="reference internal" href="types.html#type-string"><span class="std std-ref">String</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
 </div>
 <p>Related Examples:</p>
 <div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>map_name = &quot;san_francisco&quot;;
@@ -354,6 +364,95 @@ evn = Environment(time, weather);
                                 {}; // no obstacles;
                                 env;
 }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="probabilistic-programming">
+<h2>Probabilistic Programming<a class="headerlink" href="#probabilistic-programming" title="Permalink to this headline">¶</a></h2>
+<p>In the previous <a class="reference internal" href="#scenario-description"><span class="std std-ref">section</span></a>, we introduce the deterministic description of different scenes. But for users who are new to AVUnit, it’s difficult to make deterministic description. What’s more, the deterministic description is also harder for extensions (e.g. Fuzzing Algorithm). In our desgin, AVUnit is also a probabilistic programming language(like <a class="reference external" href="https://arxiv.org/abs/1809.09310">Scenic</a>). As a probabilistic programming language, AVUnit allows assigning distributions to features of the scenes.</p>
+<p>The <a class="reference internal" href="types/scenset_types.html#type-state"><span class="std std-ref">State</span></a> of AVUnit descripbes the snapshot of ego vehicles, NPC Vehicles and Pedestrians. The <a class="reference internal" href="types/scenset_types.html#type-state"><span class="std std-ref">State</span></a> consists of three basic elements: position, heading and speed. In AVUnit, we can use a probabilistic way to define these three basic elements.
+We are going to explore it in the following part.</p>
+<div class="section" id="probabilistic-position">
+<h3>Probabilistic Position<a class="headerlink" href="#probabilistic-position" title="Permalink to this headline">¶</a></h3>
+<p>As defined in <a class="reference internal" href="types/scenset_types.html#type-position"><span class="std std-ref">here</span></a>, the position type of AVUnit contains coordinate position and lane position. The probabilistic programming of these two position types is slightly different. We are going to introduce it in this section.</p>
+<div class="section" id="coordinate-position">
+<h4>Coordinate Position<a class="headerlink" href="#coordinate-position" title="Permalink to this headline">¶</a></h4>
+<p>The probabilistic programming of Coordinate Position allows users to define an “area”. The final position will be a point in this area.</p>
+<p>First part of the probabilistic Coordinate Position is just a <a class="reference internal" href="types/scenset_types.html#type-coordposition"><span class="std std-ref">CoordPosition</span></a>. We can treat it as a basic position. The “area” will be defined based on it.
+There are two vectors (connected with symbol <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) comes with keyword <code class="docutils literal notranslate"><span class="pre">range</span></code>. The first vector in the expression means the range of x-axis deviates from the basic position. Similarly, the second vetor represents the range of y-axis deviates from the basic position.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>coordPositionRange ::= [coordFrame] coordExpr &#39;range&#39; &#39;(&#39; realvalueExpr &#39;,&#39; realvalueExpr  &#39;)&#39; &#39;&amp;&#39; &#39;(&#39; realvalueExpr &#39;,&#39; realvalueExpr &#39;)&#39;
+coordFrame ::= &#39;IMU&#39; | &#39;ENU&#39; | &#39;WGS84&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">range</span></code> vector, the left element must be smaller than the right element. The <code class="docutils literal notranslate"><span class="pre">coordExpr</span></code> here is type of <a class="reference internal" href="types.html#type-coordinate"><span class="std std-ref">Coordinate</span></a>. The <code class="docutils literal notranslate"><span class="pre">realvalueExpr</span></code> here is type of <a class="reference internal" href="types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ego_init_position = (553090.1, 4182687.8) range (-10,10) &amp; (10,100);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example’s basic position is <code class="docutils literal notranslate"><span class="pre">(553090.1,</span> <span class="pre">4182687.8)</span></code>. The x-axis of the final position will be within the range of <code class="docutils literal notranslate"><span class="pre">(553090.1</span> <span class="pre">-</span> <span class="pre">10,</span> <span class="pre">553090.1</span> <span class="pre">+</span> <span class="pre">10)</span></code>. The y-axis of the final position will be within the range of <code class="docutils literal notranslate"><span class="pre">(4182687.8</span> <span class="pre">+</span> <span class="pre">10,</span> <span class="pre">4182687.8</span> <span class="pre">+</span> <span class="pre">100)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="lane-position">
+<h4>Lane Position<a class="headerlink" href="#lane-position" title="Permalink to this headline">¶</a></h4>
+<p>The probabilistic programming of Lane Position allows users to define a range of deviation from the start point of the lane. The final position will be a point along the lane.</p>
+<p>Similar to the deterministic <a class="reference internal" href="types/scenset_types.html#type-laneposition"><span class="std std-ref">Lane Position</span></a>, probabilistic Lane Position is also a relative position. The probabilistic Lane Position describe how far (within a user-defined range) an object is from the starting point of its lane (whichis specified using a laneID).</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>LanePositionRange ::=  laneID &#39;-&gt;&#39; &#39;range&#39; &#39;(&#39; realvalueExpr &#39;,&#39; realvalueExpr  &#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">range</span></code> vector, the left element must be smaller than the right element. The <code class="docutils literal notranslate"><span class="pre">realvalueExpr</span></code> here is type of <a class="reference internal" href="types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>ego_target_position = &quot;lane_45&quot;-&gt; range(2,102);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The example’s basic position is the start point of lane “lane_45”. The final position will be a point along the lane “lane_45”, and it will be between point <code class="docutils literal notranslate"><span class="pre">&quot;lane_45&quot;-&gt;</span> <span class="pre">2</span></code> and point <code class="docutils literal notranslate"><span class="pre">&quot;lane_45&quot;-&gt;</span> <span class="pre">102</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="probabilistic-heading">
+<h3>Probabilistic Heading<a class="headerlink" href="#probabilistic-heading" title="Permalink to this headline">¶</a></h3>
+<p>As defined in <a class="reference internal" href="types/scenset_types.html#type-heading"><span class="std std-ref">here</span></a>, the Heading type of AVUnit is a realtive type. The probabilistic Heading is also a realtive type (relative to a predefined direction), but it’s final value will come from a range.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>HeadingRange ::= &#39;range&#39; &#39;(&#39; angleVal &#39;,&#39; angleVal &#39;)&#39; unit [&#39;related to&#39; direction]
+direction ::= lanePosition | egoID | npcID | pedestrianID | &#39;EGO&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">range</span></code> vector, the left element must be smaller than the right element. The <code class="docutils literal notranslate"><span class="pre">angleVal</span></code> here is type of <a class="reference internal" href="types.html#type-realvalue"><span class="std std-ref">Real Value</span></a> or pi value. The <code class="docutils literal notranslate"><span class="pre">unit</span></code> is either degrees (deg) or radians (rad). The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>heading1 = range (1 pi, 10 pi) deg related to EGO;
+heading2 = range (1, 10 ) deg related to &quot;lane_39&quot;-&gt; 20;
+heading3 = range (1, 10 ) rad;
+</pre></div>
+</div>
+</div>
+<div class="section" id="probabilistic-speed">
+<h3>Probabilistic Speed<a class="headerlink" href="#probabilistic-speed" title="Permalink to this headline">¶</a></h3>
+<p>The deterministic Speed is type of <a class="reference internal" href="types.html#type-realvalue"><span class="std std-ref">Real Value</span></a> in AVUnit. The probabilistic Speed is a range of speed, the manifestation is a vector.</p>
+<p>BNF Defination:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>SpeedRange ::= &#39;range&#39; &#39;(&#39; realvalueExpr &#39;,&#39; realvalueExpr &#39;)&#39;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">range</span></code> vector, the left element must be smaller than the right element. The <code class="docutils literal notranslate"><span class="pre">realvalueExpr</span></code> here is type of <a class="reference internal" href="types.html#type-realvalue"><span class="std std-ref">Real Value</span></a>. The BNF defination here is a simplified one. For the complete version, please refer to <a class="reference internal" href="Overall_BNF.html"><span class="doc">here</span></a>.</p>
+</div>
+<p>Related Examples:</p>
+<div class="highlight-AVUnit notranslate"><div class="highlight"><pre><span></span>spd_range1 = range (1, 10);
 </pre></div>
 </div>
 </div>

@@ -237,32 +237,32 @@
         //second &lt;state&gt; is the target state of the ego vehicle
         //without &lt;vehicle type&gt;, use the default one.
 &lt;state&gt; ::= “(”&lt;position&gt;[,[&lt;heading&gt;][,&lt;speed&gt;]]”)”
-// the format can be: (position), (position, heading), (position, heading, speed), (position, ,speed)
+        // the format can be: (position), (position, heading), (position, heading, speed), (position, ,speed)
 &lt;position&gt; ::= &lt;coordinate position&gt;|&lt;lane position&gt;
-&lt;coordinate position&gt; ::= [&lt;coordinate frame&gt;]&lt;coordinate expression&gt;
+&lt;coordinate position&gt; ::= [&lt;coordinate frame&gt;]&lt;coordinate expression&gt; | [&lt;coordinate frame&gt;]&lt;coordinate expression&gt; “range” “(” real value expression “,” real value expression “)” “&amp;”  “(”  real value expression “,” real value expression “)”
 &lt;coordinate frame&gt; ::= IMU | ENU | WGS84
         // IMU: vehicle coordinate system, right-forward-up, origin is the position of the vehicle
-// ENU: east-north-up, map origin is the origin of the coordinate
-// WGS84: world geodetic system
-// default coordinate frame: ENU
+        // ENU: east-north-up, map origin is the origin of the coordinate
+        // WGS84: world geodetic system
+        // default coordinate frame: ENU
 
-&lt;lane position&gt; ::= &lt;lane ID&gt; “-““&gt;” &lt;real value expression&gt;
-// &lt;lane ID&gt; -&gt; &lt;real value&gt;: the distance of the point to the start point of &lt;lane ID&gt; is &lt;real value&gt;
+&lt;lane position&gt; ::= &lt;lane ID&gt; “-““&gt;” &lt;real value expression&gt; | &lt;lane ID&gt; “-&gt;” “range” “(“real value expression “,” real value expression “)”
+        // &lt;lane ID&gt; -&gt; &lt;real value&gt;: the distance of the point to the start point of &lt;lane ID&gt; is &lt;real value&gt;
 &lt;lane ID&gt; ::= &lt;string&gt;|[[&lt;signal&gt;]&lt;number&gt;”.”] [&lt;signal&gt;]&lt;number&gt;
 
-&lt;heading&gt; ::= &lt;angle value&gt; &lt;unit&gt; [related to &lt;direction&gt;]
-// default value: the direction to the lane where the position is on
+&lt;heading&gt; ::= &lt;angle value&gt; &lt;unit&gt; [related to &lt;direction&gt;] | “range” “(“ &lt;angle value&gt; “,” &lt;angle value&gt; “)”&lt;unit&gt;  [related to &lt;direction&gt;]
+        // default value: the direction to the lane where the position is on
 &lt;angle value&gt; ::= &lt;real value expression&gt;|&lt;pi value&gt;
 &lt;pi value&gt; ::= [&lt;real value expression&gt;]pi
 &lt;unit&gt; ::= deg | rad
 &lt;direction&gt; ::= &lt;lane position&gt;| &lt;ego identifier&gt;|&lt;npc identifier&gt;|&lt;pedestrian identifier&gt; |EGO
 
-&lt;speed&gt; ::= &lt;real value expression&gt;
+&lt;speed&gt; ::= &lt;real value expression&gt; | “range” “(“&lt;real value expression&gt;, &lt;real value expression&gt; “)”
 
 &lt;vehicle type&gt; ::= “(”&lt;type&gt;[,&lt;color&gt;]”)”
 &lt;type&gt; ::= &lt;specific type&gt;|&lt;general type&gt;
 &lt;specific type&gt; ::= “””&lt;string expression&gt;”””
-//model of the vehicle
+        //model of the vehicle
 &lt;general type&gt; ::= car|bus|Van|truck|bicycle|motorbicycle|tricycle
 &lt;color&gt; ::= &lt;color list&gt;|&lt;rgb color&gt;
 &lt;color list&gt; ::= red|green|blue|black|white
@@ -275,9 +275,9 @@
 &lt;multiple npc vehicles&gt; = &lt;npc vehicle&gt;|&lt;multiple npc vehicles&gt;,&lt;npc vehicle&gt;
 &lt;npc vehicle&gt; ::= Vehicle”(”[&lt;parameter_list_npc&gt;]”)”
 &lt;parameter_list_npc&gt; ::= &lt;state&gt; [,[&lt;vehicle motion&gt;] [,[&lt;state&gt;] [,&lt;vehicle type&gt;]]]
-//first &lt;state&gt; is the initial state of a vehicle
-//second &lt;state&gt; is the target state of a vehicle
-//default motion: uniform form motion along paths
+        //first &lt;state&gt; is the initial state of a vehicle
+        //second &lt;state&gt; is the target state of a vehicle
+        //default motion: uniform form motion along paths
 &lt;vehicle motion&gt; ::= &lt;uniform motion&gt;|&lt;waypoint motion&gt;
 &lt;uniform motion&gt; ::= &lt;uniform index&gt;”(”&lt; state&gt;”)”
         // move with the given speed in &lt;state&gt;
@@ -294,7 +294,7 @@
 &lt;random motion&gt; ::= Random(&lt;state&gt;)
 &lt;pedestrian type&gt; ::= &lt;specific type&gt;|&lt;pedestrian general type&gt;
 &lt;pedestrian general type&gt; ::= “(”&lt;height&gt;,&lt;color&gt;”)”
-//color means the color of cloth
+        //color means the color of cloth
 &lt;height&gt; ::= &lt;real value expression&gt;
 
 &lt;obstacles&gt; ::= “{“[&lt;multiple obstacles&gt;]”}”
@@ -320,7 +320,7 @@
 &lt;weather statements&gt; ::= &lt;weather statement&gt;|&lt;weather statements&gt;,&lt;weather statement&gt;
 &lt;weather statement&gt; ::= “‘”&lt;kind&gt;:“’” &lt;weather continuous index&gt;|&lt;weather discrete level&gt;;
 &lt;kind&gt; ::= sunny|rain|snow|fog|wetness|cloudiness
-//this should be set based on simulator capability
+        //this should be set based on simulator capability
 &lt;weather continuous index&gt; ::= &lt;proper fraction&gt;|1
 &lt;proper fraction&gt; ::= 0.&lt;number&gt;
 &lt;weather discrete level&gt; ::= light|middle|heavy
