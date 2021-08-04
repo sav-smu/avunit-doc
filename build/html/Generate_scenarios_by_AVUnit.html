@@ -97,7 +97,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Generate Scenarios by AVUnit</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#describe-a-scenario">Describe a Scenario!!!</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#describe-a-scenario">Describe a Scenario</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#map">Map</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ego-vehicle">Ego Vehicle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#npc-vehicles">Npc Vehicles</a></li>
@@ -199,7 +199,7 @@
 <h1>Generate Scenarios by AVUnit<a class="headerlink" href="#generate-scenarios-by-avunit" title="Permalink to this headline">¶</a></h1>
 <p>A key distinction of AVUnit in comparison to other languages for scenes is that it  provides  a user-friendly and domain-specific way to specifys cenarios, in which objects are executing  independent journey plans in an environment that is dynamically changing. Without specifying scenarios, many real-world behaviours of AVs may not be properly tested. Asking users to fully specify scenarios, however, would be overwhelming, so AVUnit strikes  a  balance by  allowing  them  to  specify  some  key  parts  (e.g. journey waypoints) while leaving the rest to automatic test generation. In  particular, AVUnit supports  an  agent-oriented  style of programming, in which the motions of individual objects arespecified in a fully decoupled way. We will present the key features of the language that support this design in this section.</p>
 <div class="section" id="describe-a-scenario">
-<span id="scenario-description"></span><h2>Describe a Scenario!!!<a class="headerlink" href="#describe-a-scenario" title="Permalink to this headline">¶</a></h2>
+<span id="scenario-description"></span><h2>Describe a Scenario<a class="headerlink" href="#describe-a-scenario" title="Permalink to this headline">¶</a></h2>
 <p>In our desgin, a scenario is composed of six elements: <code class="docutils literal notranslate"><span class="pre">map</span></code>，<code class="docutils literal notranslate"><span class="pre">ego</span> <span class="pre">vehicl</span></code> ，<code class="docutils literal notranslate"><span class="pre">npc</span> <span class="pre">vehicles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">pedestrians</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">obstacles</span></code> [Optional]，<code class="docutils literal notranslate"><span class="pre">environment</span></code> [Optional]. We are going to explore it in this part.</p>
 <div class="section" id="map">
 <span id="type-map"></span><h3>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
